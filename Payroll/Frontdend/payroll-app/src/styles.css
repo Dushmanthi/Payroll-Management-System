@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* @import url(https://unpkg.com/bootstrap@4.1.0/dist/css/bootstrap.min.css) */
+ /* "../node_modules/jquery/dist/jquery.min.js",
+"../node_modules/bootstrap/dist/js/bootstrap.min.js" */
+
+@import url(../node_modules/bootstrap/dist/css/bootstrap.min.css);
+@import url(../node_modules/font-awesome/css/font-awesome.css);
+
+html{
+    color: #555;
+    font-family: Arial, Helvetica, sans-serif;
+    text-rendering: optimizeLegibility;
+   
+}

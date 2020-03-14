@@ -1,0 +1,10 @@
+server:
+  port: 8282
+  eureka:
+    client:
+      register-with-eureka: true
+      fetch-registry:
+spring:
+  application:
+    name: attendance
+
