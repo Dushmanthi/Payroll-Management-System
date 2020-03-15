@@ -5,15 +5,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './auth/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LogoutComponent } from './logout/logout.component';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import { HttpInterceptorService } from './http-interceptor.service';
 import { MenuComponent } from './menu/menu.component';
-import { RegistrationComponent } from './registration/registration.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { RegisterSuccessComponent } from './auth/register-success/register-success.component';
+import {Ng2Webstorage} from 'ngx-webstorage';
 
 
 @NgModule({
@@ -23,8 +22,6 @@ import { RegisterSuccessComponent } from './auth/register-success/register-succe
     DashboardComponent,
     LogoutComponent,
     MenuComponent,
-    RegistrationComponent,
-    RegistrationComponent,
     RegisterComponent,
     RegisterSuccessComponent
   ],
@@ -33,14 +30,15 @@ import { RegisterSuccessComponent } from './auth/register-success/register-succe
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2Webstorage
   ],
   providers: [
-    {
-      provide:HTTP_INTERCEPTORS,
-      useClass: HttpInterceptorService,
-      multi:true
-    }
+   // {
+     // provide: HTTP_INTERCEPTORS,
+      // useClass: HttpInterceptorService,
+    //  multi: true
+    // }
   ],
   bootstrap: [AppComponent]
 })

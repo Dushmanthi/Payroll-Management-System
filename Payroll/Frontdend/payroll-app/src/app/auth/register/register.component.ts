@@ -2,6 +2,7 @@ import { AuthService } from '../auth.service';
 import { RegisterPayload } from './../register-payload';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   registerPayload: RegisterPayload;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
     this.registerForm = this.formBuilder.group({
       username: '',
       password: '',
@@ -36,9 +37,10 @@ export class RegisterComponent implements OnInit {
     this.registerPayload.confirmPassword = this.registerForm.get('confirmPassword').value;
 
     this.authService.register(this.registerPayload).subscribe(data => {
-        console.log(' register successed!');
+        console.log(' register successed!')
+      this.router.navigateByUrl('/register-success');
     }, error => {
-      console.log('failed !');
+      console.log('register failed !');
     });
   }
 

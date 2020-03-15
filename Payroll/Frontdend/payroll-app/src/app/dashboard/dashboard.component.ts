@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Message } from '../message';
-import { DashboardMessageService } from '../dashboard-message.service';
+// import { Message } from '../message';
+// import { DashboardMessageService } from '../dashboard-message.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,13 +12,15 @@ export class DashboardComponent implements OnInit {
   message: string;
   dashboardService: any;
 
-  constructor(private dashboardComponent:DashboardMessageService) { }
+  constructor(
+  //  private dashboardComponent:DashboardMessageService
+  ) { }
 
   ngOnInit() {
-    console.log("DashboardMessageComponent");
-    this.dashboardService.dashboardService().subscribe( (result) => {
-      this.message = result.content;
-    });
+    // console.log("DashboardMessageComponent");
+    // this.dashboardService.dashboardService().subscribe( (result) => {
+    //   this.message = result.content;
+    // });
   }
 
 }

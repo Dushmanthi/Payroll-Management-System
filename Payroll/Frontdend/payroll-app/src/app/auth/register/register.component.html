@@ -1,31 +1,59 @@
 <app-menu></app-menu>
 <div class="container col-lg-6">
- 
-    <div>
-        <h5><u>Signup</u></h5>
-        <form name="register" #f="ngForm" (ngSubmit)="signup()" [formGroup]="registerForm"> 
-            <div class="form-group">
-                <label for="empId">Employee Id:</label>
-                <input type="text" class="form-control" id="empId" placeholder="1001" [formControlName]="'username'" >
-              </div>
+  <h4 class="text-center">Signup as a New User</h4>
+  <div class="card">
+    <div class="card-body">
+      <form class="form-group" (ngSubmit)="signup()" [formGroup]="registerForm">
+        <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+        <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
 
-              <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" class="form-control" id="password" placeholder="password" [formControlName]="'password'" >
-              </div>
-
-              <div class="form-group">
-                <label for="confirmPassword">Password:</label>
-                <input type="password" class="form-control" id="confirmPassword" placeholder=" confirm password" [formControlName]="'confirmPassword'" >
-              </div>
-
-              <button type="submit" class="btn btn-primary">Sign up</button>
-            </form>
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" class="form-control" id="username" placeholder="john" [formControlName]="'username'" >
         </div>
-  </div>  
 
-        
-  
-  
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" id="password" placeholder="password" [formControlName]="'password'" >
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Password:</label>
+          <input type="password" class="form-control" id="confirmPassword" placeholder=" confirm password" [formControlName]="'confirmPassword'" >
+        </div>
+        <button type="submit" class="btn btn-success">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--<div class="container col-lg-6">-->
+
+<!--    <div>-->
+<!--        <h5><u>Signup</u></h5>-->
+<!--        <form name="register" #f="ngForm" (ngSubmit)="signup()" [formGroup]="registerForm">-->
+<!--            <div class="form-group">-->
+<!--                <label for="username">Username:</label>-->
+<!--                <input type="text" class="form-control" id="username" placeholder="john" [formControlName]="'username'" >-->
+<!--              </div>-->
+
+<!--              <div class="form-group">-->
+<!--                <label for="password">Password:</label>-->
+<!--                <input type="password" class="form-control" id="password" placeholder="password" [formControlName]="'password'" >-->
+<!--              </div>-->
+
+<!--              <div class="form-group">-->
+<!--                <label for="confirmPassword">Password:</label>-->
+<!--                <input type="password" class="form-control" id="confirmPassword" placeholder=" confirm password" [formControlName]="'confirmPassword'" >-->
+<!--              </div>-->
+
+<!--              <button type="submit" class="btn btn-primary">Sign up</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--  </div>-->
+
+
+
+
 
 

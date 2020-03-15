@@ -3,7 +3,6 @@ package com.dushi.LoginServer.controller;
 import com.dushi.LoginServer.dto.LoginRequest;
 import com.dushi.LoginServer.dto.RegisterRequest;
 import com.dushi.LoginServer.service.AuthService;
-import com.dushi.LoginServer.service.AuthenticationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,8 +34,8 @@ public class BasicAuthController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public AuthenticationResponse signin(@RequestBody LoginRequest loginRequest){
+    @RequestMapping(value = "/signin",method = RequestMethod.POST)
+    public String signin(@RequestBody LoginRequest loginRequest){
         return authService.signin(loginRequest);
 
     }

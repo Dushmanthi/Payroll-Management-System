@@ -5,5 +5,5 @@ import com.dushi.LoginServer.dto.RegisterRequest;
 
 public interface AuthService {
     public void signup(RegisterRequest registerRequest);
-    public AuthenticationResponse signin(LoginRequest loginRequest);
+    public String signin(LoginRequest loginRequest);
 }
