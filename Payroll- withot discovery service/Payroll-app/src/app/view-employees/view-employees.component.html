@@ -4,48 +4,53 @@
     <table class="table table1">
       <tr>
         <td><h5><b>Employee List</b></h5>   </td>
-        <td> <button type="submit" class="btn btn-primary  "  id="submitbtn"> <i class="fa fa-user-plus" aria-hidden="true"></i>
+        <td> <button type="submit" class="btn btn-primary  "  id="submitbtn" (click)="addEmployee()"> <i class="fa fa-user-plus" aria-hidden="true"></i>
           Add Employee</button></td>
       </tr>
     </table>
 
   </div>
-  <div class="panel-body" style="text-align:center ">
+  <div class="panel-body">
     <div class="table-responsive-lg">
-    <table class="table table-striped table2"  style="text-align:center ">
+    <table class="table table-striped table2"  >
       <thead>
       <tr>
+        <th style="display: none;">Id</th>
         <th>EmpId</th>
         <th>FirstName</th>
         <th>LastName</th>
+        <th>Address No</th>
+        <th>Street</th>
+        <th>Telephone</th>
+        <th>City</th>
         <th>Email</th>
         <th>Designation</th>
-        <th>Hourlypay</th>
-        <th>Maximum Working Hours</th>
-        <th style="text-align:center">  Actions</th>
+<!--        <th>Hourlypay</th>-->
+<!--        <th>Maximum Working Hours</th>-->
+        <th>Actions</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let employee of employees | async">
+        <td style="display: none;">{{employee.id}}</td>
         <td>{{employee.empId}}</td>
         <td>{{employee.firstName}}</td>
         <td>{{employee.lastName}}</td>
+        <td>{{employee.number}}</td>
+        <td>{{employee.street}}</td>
+        <td>{{employee.city}}</td>
+        <td>{{employee.phoneNumber}}</td>
         <td>{{employee.email}}</td>
         <td>{{employee.designation}}</td>
-        <td>{{employee.hourlypay}}</td>
-        <td>{{employee.maximumWorkingHours}}</td>
+<!--        <td>{{employee.hourlypay}}</td>-->
+<!--        <td>{{employee.maximumWorkingHours}}</td>-->
 
-        <td>
-<!--          <button (click)="deleteEmployee(employee.empId)" class="btn btn-danger" style="margin-left: 10px">Delete</button>-->
-<!--          <button (click)="employeeDetails(employee.empId)" class="btn btn-info" style="margin-left: 10px">Details</button>-->
-<!--          <button (click)="updateEmployee(employee.empId)" class="btn btn-info" style="margin-left: 10px">Update</button>-->
-
-
-      <pre class="tab ">
-         <i (click)="employeeDetails(employee.empId)"class="fa fa-pencil tab1" style="font-size:24px;color:darkred;"></i>    <i (click)="updateEmployee(employee.empId)" class="fa fa-eye tab1" style="font-size:24px;color:darkred;"></i>    <i (click)="deleteEmployee(employee.empId)" class="fa fa-trash tab1" style="font-size:24px;color:darkred;"></i>
-      </pre>
-
+        <td class="icon">
+          <i (click)="employeeDetails(employee.id)"class="fa fa-eye tab1" title="View" style="font-size:22px;color:dimgray;margin-right:15px; cursor: pointer;"></i>
+          <i (click)="updateEmployee(employee.id)" class="fa fa-pencil tab1"  title="Edit" style="font-size:22px;color:dimgray; margin-right:15px; cursor: pointer;"></i>
+          <i (click)="deleteEmployee(employee.id)" class="fa fa-trash tab1"  title="Detete" style="font-size:22px;color:dimgray; cursor: pointer;"></i>
         </td>
+
       </tr>
       </tbody>
     </table>

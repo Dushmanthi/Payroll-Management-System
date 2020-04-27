@@ -1,33 +1,52 @@
 <app-menu></app-menu>
 
-<h2>Payment Details</h2>
+<div class="container col-lg-4 ">
 
-<hr/>
-<div *ngIf="payment">
-  <div>
-    <label><b>Emp Id: </b></label> {{payment.empId}}
-  </div>
-  <div>
-    <label><b>Year: </b></label> {{payment.year}}
-  </div>
-  <div>
-    <label><b>Month: </b></label> {{payment.month}}
-  </div>
-  <div>
-    <label><b>Day: </b></label> {{payment.day}}
-  </div>
-  <div>
-    <label><b>Working Hours: </b></label> {{payment.workingHours}}
-  </div>
-  <div>
-    <label><b>Hourlypay: </b></label> {{payment.hourlypay}}
-  </div>
-  <div>
-    <label><b>Day Salary: </b></label> {{payment.daySalary}}
-  </div>
+  <div [hidden]="submitted">
+    <h5><b>DAILY PAYMENT DETAILS</b></h5>
+    <hr/>
+    <div *ngIf="payment">
 
+      <table class="table table1">
+        <tr>
+          <td><label><b>Emp Id: </b></label></td>
+          <td> {{payment.empId}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>Year: </b></label></td>
+          <td>{{payment.year}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>Month: </b></label></td>
+          <td> {{payment.month}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>Day: </b></label></td>
+          <td> {{payment.day}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>Working Hours: </b></label></td>
+          <td> {{payment.workingHours}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>Hourlypay: </b></label></td>
+          <td> {{payment.hourlypay}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>Day Salary: </b></label></td>
+          <td> {{payment.daySalary}}</td>
+        </tr>
+
+      </table>
+
+      <button type="submit" class="btn" id="submitbtn" (click)="list()">Back to Payment List</button>
+
+
+  </div>
 </div>
-
-<br>
-<br>
-<button (click)="list()" class="btn btn-primary">Back to Payment List</button><br>

@@ -17,7 +17,7 @@ export class AttendanceDetailsComponent implements OnInit {
   ngOnInit() {
     this.attendance = new Attendance();
     this.empId = this.route.snapshot.params['empId'];
-
+    console.log(this.empId);
     this.attendanceService.getAttendance(this.empId)
       .subscribe(data => {
         console.log(data)
@@ -26,7 +26,7 @@ export class AttendanceDetailsComponent implements OnInit {
   }
 
 list(){
-  this.router.navigate(['add-attendance']);
+  this.router.navigate(['view-attendance']);
 }
 
 }

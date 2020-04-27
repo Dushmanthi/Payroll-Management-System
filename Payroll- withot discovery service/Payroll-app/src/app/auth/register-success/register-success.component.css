@@ -1,0 +1,36 @@
+div {
+  border-radius: 5px;
+  background-color:lightcyan;
+}
+
+h5{
+  margin-top: 20px;
+  color:darkslategrey;
+  text-align: center;
+}
+
+.container{
+  padding: 10px 30px 10px 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+  transition: 0.3s;
+  width: 40%;
+  margin-top: 200px;
+
+}
+
+#submitbtn{
+  margin-letf:20px;
+  margin-right:20px;
+  margin: 10px 0 20px ;
+  color:white;
+  margin-left: 40%;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 20px;
+  margin-bottom:40px;
+}
+
+
+
+

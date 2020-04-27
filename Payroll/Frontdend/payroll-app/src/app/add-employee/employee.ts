@@ -1,4 +1,5 @@
 export class Employee {
+  id: number;
   empId: number;
   firstName: string;
   username:string;
@@ -9,8 +10,8 @@ export class Employee {
   phoneNumber: string;
   email: string;
   designation: string;
-  hourlypay: number;
-  maximumWorkingHours: number;
+  // hourlypay: number;
+  // maximumWorkingHours: number;
 
 }
 

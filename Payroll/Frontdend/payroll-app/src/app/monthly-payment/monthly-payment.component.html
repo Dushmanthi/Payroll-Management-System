@@ -1,0 +1,100 @@
+<app-menu></app-menu>
+<div class="container col-lg-6" >
+
+  <div [hidden]="submitted" >
+    <h5><b>MONTHLY PAYMENT DETAILS </b></h5>
+    <form name="payment"    [formGroup]="form">
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+        <label for="empId">Employee Id:</label>
+        <input type="text" class="form-control" id="empId" placeholder="1001" required
+               [(ngModel)]="payment.empId" name="empId" formControlName="empId"/>
+<!--               [ngClass]="{'is-invalid':form.get('empId').touched && form.get('empId').invalid}"/>-->
+<!--        <div  *ngIf="form.get('empId').touched && form.get('empId').invalid" class="invalid-feedback">-->
+<!--          <div *ngIf="form.get('empId').errors.required">EmpId is required</div>-->
+<!--        </div>-->
+      </div>
+
+        <div class="form-group col-md-4">
+          <label for="year">Year:</label>
+          <input type="text" class="form-control" id="year" placeholder="year" required
+                 [(ngModel)]="payment.year" name="year" formControlName="year"/>
+<!--                 [ngClass]="{'is-invalid':form.get('year').touched && form.get('year').invalid}"/>-->
+<!--          <div  *ngIf="form.get('year').touched && form.get('year').invalid" class="invalid-feedback">-->
+<!--            <div *ngIf="form.get('year').errors.required">Year is required</div>-->
+<!--          </div>-->
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="month">Month:</label>
+          <input type="text" class="form-control" id="month" placeholder="month" required
+                 [(ngModel)]="payment.month" name="month" formControlName="month"/>
+<!--                 [ngClass]="{'is-invalid':form.get('month').touched && form.get('month').invalid}"/>-->
+<!--          <div   *ngIf="form.get('month').touched && form.get('month').invalid" class="invalid-feedback">-->
+<!--            <div *ngIf="form.get('month').errors.required">Month is required</div>-->
+          </div>
+        </div>
+
+      <button type="submit" class="btn" id="submitbtn" (click)="onSubmit()"  >Calculate Monthly Salary</button>
+
+    </form>
+  </div>
+</div>
+
+<!--<div class="container col-lg-4 ">   (ngSubmit)="onSubmit()" -->
+
+<!--  <div [hidden]="submitted">-->
+<!--    <h5><b>MONTHLY PAYMENT DETAILS</b></h5>-->
+<!--    <hr/>-->
+<!--    <div *ngIf="payment">-->
+
+<!--      <table class="table table1">-->
+<!--        <tr>-->
+<!--          <td><label><b>Emp Id: </b></label></td>-->
+<!--          <td> {{payment.empId}}</td>-->
+<!--        </tr>-->
+
+<!--        <tr>-->
+<!--          <td><label><b>Year: </b></label></td>-->
+<!--          <td>{{payment.year}}</td>-->
+<!--        </tr>-->
+
+<!--        <tr>-->
+<!--          <td><label><b>Month: </b></label></td>-->
+<!--          <td> {{payment.month}}</td>-->
+<!--        </tr>-->
+
+<!--        <tr>-->
+<!--          <td><label><b>Monthly Salary: </b></label></td>-->
+<!--          <td> {{payment.monthlySalary}}</td>-->
+<!--        </tr>-->
+
+<!--      </table>-->
+
+<!--      <button type="submit" class="btn" id="submitbtn" (click)="list()">Back to Payment List</button>-->
+
+
+<!--    </div>-->
+<!--  </div>-->
+
+<!--<div class="container col-lg-4 ">-->
+
+<!--  <div [hidden]="submitted">-->
+<!--    <h5><b>Monthly salary</b></h5>-->
+<!--    <hr/>-->
+<!--    <div *ngIf="payment">-->
+
+<!--      <table class="table table1">-->
+<!--        <tr>-->
+<!--          <td><label><b>Emp Id: </b></label></td>-->
+<!--          <td><label><b>{{payment.monthlySalary}}</b></label></td>-->
+<!--        </tr>-->
+<!--      </table>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+
+

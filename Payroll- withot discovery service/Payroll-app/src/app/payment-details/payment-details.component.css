@@ -1,0 +1,38 @@
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+}
+
+h5{
+  margin-top: 20px;
+  /*padding: 20px 0 10px 0;*/
+  color:midnightblue;
+  text-align: center;
+}
+
+.container{
+  padding: 10px 30px 10px 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+  transition: 0.3s;
+  /*width: 40%;*/
+  margin-top: 20px;
+  margin-bottom:20px;
+}
+
+#submitbtn{
+  background-color:midnightblue;
+  margin: 10px 0 20px ;
+  margin-left: 28%;
+  color:white;
+  border-radius: 20px;
+}
+
+.table.table1{
+  border-style:hidden;
+}
+
+
+
+
+

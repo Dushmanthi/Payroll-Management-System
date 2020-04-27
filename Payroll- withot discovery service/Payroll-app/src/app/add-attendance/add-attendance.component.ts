@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {AddAttendanceService} from '../add-attendance.service';
 import {Attendance} from './attendance';
 import { Router } from '@angular/router';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-add-attendance',
@@ -9,38 +11,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-attendance.component.css']
 })
 export class AddAttendanceComponent implements OnInit {
+  form = new FormGroup({
+    empId: new FormControl(0,Validators.required),
+    year : new FormControl(0,Validators.required),
+    month:new FormControl('',Validators.required),
+    day : new FormControl(0,Validators.required),
+    workingHours: new FormControl(0,Validators.required),
+    isPresent : new FormControl('',Validators.required)
+  });
+
+
+  attendances: Observable<Attendance[]>;
 attendance: Attendance= new Attendance();
 submitted = false;
-// attendanceForm:FormGroup;
-// attendancePayload :AttendancePayload;
-//
-// empId =new FormControl('');
-// year =new FormControl('');
-// month =new FormControl('');
-// day =new FormControl('');
-// workingHours =new FormControl('');
-// isPresent =new FormControl('');
 
-  constructor(private addAttendanceService: AddAttendanceService, private router: Router) {
-//   this.attendanceForm = new FormGroup({
-//   empId : this.empId,
-//   year : this.year,
-//   month: this.month,
-//   day : this.day,
-//   workingHours: this.workingHours,
-//   isPresent : this.isPresent,
-
-//   });
-//
-//   this.attendancePayload ={
-//   empId : '',
-//     year : '',
-//     month:'',
-//     day : '',
-//     workingHours: '',
-//     isPresent : '',
-//
-//   }
+  constructor(private attendanceService: AddAttendanceService, private router: Router) {
 
   }
 
@@ -53,10 +38,11 @@ submitted = false;
   }
 
   save(){
-  this.addAttendanceService.addAttendance(this.attendance)
+  this.attendanceService.addAttendance(this.attendance)
     .subscribe(data=>console.log(data),
     error=>console.log(error));
     this.attendance = new Attendance();
+
     this.gotoList();
   }
 
@@ -66,25 +52,8 @@ submitted = false;
     }
 
     gotoList() {
-        this.router.navigate(['/view-attendance']);
+
+      this.router.navigate(['/view-attendance']);
       }
-
-
-
-//   addAttendance(){
-//     this.attendancePayload.empId = this.attendanceForm.get('empId').value;
-//     this.attendancePayload.year = this.attendanceForm.get('year').value;
-//     this.attendancePayload.month = this.attendanceForm.get('month').value;
-//     this.attendancePayload.day = this.attendanceForm.get('day').value;
-//     this.attendancePayload.workingHours = this.attendanceForm.get('workingHours').value;
-//     this.attendancePayload.isPresent = this.attendanceForm.get('isPresent').value;
-//
-//     this.addAttendanceService.addAttendance(this.attendancePayload).subscribe(data=>{
-//             console.log('attendance added successfuly');
-//             this.router.navigateByUrl('/attendance-details');
-//         }, error => {
-//           console.log('attendance failed');
-//         });
-//   }
 
 }

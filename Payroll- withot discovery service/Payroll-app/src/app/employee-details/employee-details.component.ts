@@ -25,6 +25,6 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   list(){
-    this.router.navigate(['add-employee']);
+    this.router.navigate(['view-employee']);
   }
 }

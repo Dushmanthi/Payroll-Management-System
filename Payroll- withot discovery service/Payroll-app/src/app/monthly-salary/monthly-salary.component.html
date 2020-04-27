@@ -1,0 +1,39 @@
+<app-menu></app-menu>
+
+<div class="container col-lg-4 ">
+
+  <div [hidden]="submitted">
+    <h5><b>MONTHLY PAYMENT DETAILS</b></h5>
+    <hr/>
+    <div *ngIf="salary">
+
+      <table class="table table1">
+        <tr>
+          <td><label><b>Emp Id: </b></label></td>
+          <td>  {{salary.empId}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>Year: </b></label></td>
+          <td>{{salary.year}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>Month: </b></label></td>
+          <td> {{salary.month}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>Monthly Salary: </b></label></td>
+          <td>{{salary.monthlySalary}}</td>
+        </tr>
+
+
+      </table>
+
+      <button type="submit" class="btn" id="submitbtn" (click)="list()">Back to Payment List</button>
+
+
+    </div>
+  </div>
+

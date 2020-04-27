@@ -1,29 +1,79 @@
 <app-menu></app-menu>
 
-<h2>Attendance Details</h2>
+<div class="container col-lg-4 ">
 
-<hr/>
-<div *ngIf="attendance">
-  <div>
-    <label><b>Emp Id: </b></label> {{attendance.empId}}
-  </div>
-  <div>
-    <label><b>Year: </b></label> {{attendance.year}}
-  </div>
-  <div>
-    <label><b>Month: </b></label> {{attendance.month}}
-  </div>
-  <div>
-    <label><b>Day: </b></label> {{attendance.day}}
-  </div>
-  <div>
-    <label><b>Working Hours: </b></label> {{attendance.workingHours}}
-  </div>
-  <div>
-    <label><b>isPresent: </b></label> {{attendance.isPresent}}
-  </div>
-</div>
+  <div [hidden]="submitted">
+    <h5><b>ATTENDANCE DETAILS</b></h5>
+    <hr/>
+    <div *ngIf="attendance">
 
-<br>
-<br>
-<button (click)="list()" class="btn btn-primary">Back to Attendance List</button><br>
+      <table class="table table1">
+        <tr>
+          <td><label><b>Emp Id: </b></label></td>
+          <td> {{attendance.empId}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>Year: </b></label></td>
+          <td>{{attendance.year}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>Month: </b></label></td>
+          <td> {{attendance.month}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>Day: </b></label></td>
+          <td> {{attendance.day}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>Working Hours: </b></label></td>
+          <td> {{attendance.workingHours}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>Is Present: </b></label></td>
+          <td> {{attendance.isPresent}}</td>
+        </tr>
+
+
+      </table>
+
+      <button type="submit" class="btn" id="submitbtn" (click)="list()">Back to Attendance List</button>
+
+
+    </div>
+  </div>
+
+
+<!--  <app-menu></app-menu>-->
+
+<!--<h2>Attendance Details</h2>-->
+
+<!--<hr/>-->
+<!--<div *ngIf="attendance">-->
+<!--  <div>-->
+<!--    <label><b>Emp Id: </b></label> {{attendance.empId}}-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label><b>Year: </b></label> {{attendance.year}}-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label><b>Month: </b></label> {{attendance.month}}-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label><b>Day: </b></label> {{attendance.day}}-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label><b>Working Hours: </b></label> {{attendance.workingHours}}-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label><b>isPresent: </b></label> {{attendance.isPresent}}-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<br>-->
+<!--<br>-->
+<!--<button (click)="list()" class="btn btn-primary">Back to Attendance List</button><br>-->

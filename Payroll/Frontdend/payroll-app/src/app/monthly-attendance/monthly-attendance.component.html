@@ -1,0 +1,88 @@
+<app-menu></app-menu>
+
+<div class="container col-lg-6" >
+
+  <div [hidden]="submitted" >
+    <h5><b>MONTHLY ATTENDANCE </b></h5>
+    <form name="attendance"   (ngSubmit)="onSubmit()"  [formGroup]="form">
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+        <label for="empId">Employee Id:</label>
+        <input type="text" class="form-control" id="empId" placeholder="1001" required
+               [(ngModel)]="attendance.empId" name="empId" formControlName="empId"/>
+<!--               [ngClass]="{'is-invalid':form.get('empId').touched && form.get('empId').invalid}"/>-->
+<!--        <div  *ngIf="form.get('empId').touched && form.get('empId').invalid" class="invalid-feedback">-->
+<!--          <div *ngIf="form.get('empId').errors.required">EmpId is required</div>-->
+<!--        </div>-->
+      </div>
+
+
+        <div class="form-group col-md-4">
+          <label for="year">Year:</label>
+          <input type="text" class="form-control" id="year" placeholder="year" required
+                 [(ngModel)]="attendance.year" name="year" formControlName="year"/>
+<!--                 [ngClass]="{'is-invalid':form.get('year').touched && form.get('year').invalid}"/>-->
+<!--          <div  *ngIf="form.get('year').touched && form.get('year').invalid" class="invalid-feedback">-->
+<!--            <div *ngIf="form.get('year').errors.required">Year is required</div>-->
+<!--          </div>-->
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="month">Month:</label>
+          <input type="text" class="form-control" id="month" placeholder="month" required
+                 [(ngModel)]="attendance.month" name="month" formControlName="month"/>
+<!--                 [ngClass]="{'is-invalid':form.get('month').touched && form.get('month').invalid}"/>-->
+<!--          <div   *ngIf="form.get('month').touched && form.get('month').invalid" class="invalid-feedback">-->
+<!--            <div *ngIf="form.get('month').errors.required">Month is required</div>-->
+<!--          </div>-->
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn" id="submitbtn1" [disabled]="!form.valid">View Monthly Attendance</button>
+        <button (click)="list()" type="submit" class="btn" id="submitbtn1" >Back to Attendance List</button>
+
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+<div class="panel panel-primary">
+<!--  <div class="panel-heading">-->
+<!--    <h5 class="topic"><b>Monthly Attendance</b></h5>-->
+
+<!--  </div>-->
+  <div class="panel-body">
+    <div class="table-responsive-lg">
+      <table class="table table-striped table2"  >
+        <thead>
+        <tr>
+          <th>EmpId</th>
+          <th>Year</th>
+          <th>Month</th>
+          <th>Day</th>
+          <th>Is Present</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let attendance of attendances | async">
+          <td>{{attendance.empId}}</td>
+          <td>{{attendance.year}}</td>
+          <td>{{attendance.month}}</td>
+          <td>{{attendance.day}}</td>
+          <td>{{attendance.isPresent}}</td>
+
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+
+

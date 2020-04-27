@@ -1,38 +1,59 @@
 <app-menu></app-menu>
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h2>Payment List</h2>
-  </div>
-  <div class="panel-body">
-    <table class="table table-striped">
-      <thead>
+    <table class="table table1">
       <tr>
-        <th>EmpId</th>
-        <th>year</th>
-        <th>month</th>
-        <th>day</th>
-        <th>workingHours</th>
-        <th>hourlypay</th>
-        <th>daySalary</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let payment of payments | async">
-        <td>{{payment.empId}}</td>
-        <td>{{payment.year}}</td>
-        <td>{{payment.month}}</td>
-        <td>{{payment.day}}</td>
-        <td>{{payment.workingHours}}</td>
-        <td>{{payment.hourlypay}}</td>
-        <td>{{payment.daySalary}}</td>
-
-        <td><button (click)="deletePayment(payment.empId)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
-          <button (click)="paymentDetails(payment.empId)" class="btn btn-info" style="margin-left: 10px">Details</button>
-          <button (click)="updatePayment(payment.empId)" class="btn btn-info" style="margin-left: 10px">Update</button>
+        <td><h5><b>Payment List</b></h5>   </td>
+        <td>
+          <button type="submit" class="btn btn-primary  "  id="submitbtn" (click)="addPayment()"> <i class="fa fa-usd" aria-hidden="true"></i><i class="fa fa-plus" style="font-size:10px;"></i>
+          Add Payment</button>
+        <button type="submit" class="btn btn-primary"  id="submitbtn" (click)="viewMonthlyPayment()"> <i class="fa fa-usd" aria-hidden="true"></i>
+          Monthly Salary</button>
         </td>
       </tr>
-      </tbody>
     </table>
 
   </div>
+  <div class="panel-body">
+    <div class="table-responsive-lg">
+      <table class="table table-striped table2"  >
+        <thead>
+        <tr>
+          <th style="display: none;">Id</th>
+          <th>EmpId</th>
+          <th>Year</th>
+          <th>Month</th>
+          <th>Day</th>
+          <th>Working Hours</th>
+          <th>Hourlypay</th>
+          <th>Day Salary</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let payment of payments | async">
+          <td style="display: none;">{{payment.id}}</td>
+          <td>{{payment.empId}}</td>
+          <td>{{payment.year}}</td>
+          <td>{{payment.month}}</td>
+          <td>{{payment.day}}</td>
+          <td>{{payment.workingHours}}</td>
+          <td>{{payment.hourlypay}}</td>
+          <td>{{payment.daySalary}}</td>
+
+          <td class="icon">
+         <i (click)="paymentDetails(payment.id)"class="fa fa-eye tab1"  title="View" style="font-size:22px;color:dimgray; margin-right:15px; cursor: pointer;"></i>
+            <i (click)="updatePayment(payment.id)" class="fa fa-pencil tab1"  title="Edit" style="font-size:22px;color:dimgray; margin-right:15px; cursor: pointer;"></i>
+            <i (click)="deletePayment(payment.id)" class="fa fa-trash tab1"  title="Delete" style="font-size:22px;color:dimgray; margin-right:15px; cursor: pointer;"></i>
+          </td>
+
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
 </div>
+
+
+

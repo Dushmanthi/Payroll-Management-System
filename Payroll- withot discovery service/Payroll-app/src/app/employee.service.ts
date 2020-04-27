@@ -13,20 +13,20 @@ export class EmployeeService {
     return this.httpClient.post('http://localhost:8181/api/employees/add-employee',employee);
   }
 
-  getEmployee(empId: number): Observable<any> {
-    return this.httpClient.get('http://localhost:8181/api/employees/findById/'+empId);
+  getEmployee(id: number): Observable<any> {
+    return this.httpClient.get('http://localhost:8181/api/employees/findById/'+id);
   }
 
   getEmployeeList(): Observable<any> {
     return this.httpClient.get('http://localhost:8181/api/employees/findAllEmployees');
   }
 
-  updateEmployee(empId: number, value: any): Observable<Object> {
-    return this.httpClient.put('http://localhost:8181/api/employees/updateEmployee/'+empId, value);
+  updateEmployee(id: number, value: any): Observable<Object> {
+    return this.httpClient.put('http://localhost:8181/api/employees/updateEmployee/'+id, value);
   }
 
-  deleteEmployee(empId: number): Observable<any> {
-    return this.httpClient.delete('http://localhost:8181/api/employees/deleteEmployee/'+empId, { responseType: 'text' });
+  deleteEmployee(id: number): Observable<any> {
+    return this.httpClient.delete('http://localhost:8181/api/employees/deleteEmployee/'+id, { responseType: 'text' });
   }
 
 }

@@ -1,35 +1,97 @@
 <app-menu></app-menu>
 
-<h2>Employee Details</h2>
+<div class="container col-lg-4 ">
 
-<hr/>
-<div *ngIf="employee">
-  <div>
-    <label><b>Emp Id: </b></label> {{employee.empId}}
-  </div>
-  <div>
-    <label><b>FirstName: </b></label> {{employee.firstName}}
-  </div>
-  <div>
-    <label><b>LastName: </b></label> {{employee.lastName}}
-  </div>
-  <div>
-    <label><b>Email: </b></label> {{employee.email}}
-  </div>
-  <div>
-    <label><b>Designation: </b></label> {{employee.designation}}
-  </div>
-  <div>
-    <label><b>Hourlypay: </b></label> {{employee.hourlypay}}
-  </div>
-  <div>
-    <label><b>maximumWorkingHours: </b></label> {{employee.maximumWorkingHours}}
-  </div>
-</div>
+  <div [hidden]="submitted">
+    <h5><b>ATTENDANCE DETAILS</b></h5>
+    <hr/>
+    <div *ngIf="employee">
 
-<br>
-<br>
-<button (click)="list()" class="btn btn-primary">Back to Employee List</button><br>
+      <table class="table table1">
+        <tr>
+          <td><label><b>Emp Id: </b></label></td>
+          <td> {{employee.empId}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>FirstName: </b></label></td>
+          <td>{{employee.firstName}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>LastName: </b></label></td>
+          <td> {{employee.lastName}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>Address NO: </b></label></td>
+          <td> {{employee.number}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>Street: </b></label></td>
+          <td> {{employee.street}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>City: </b></label></td>
+          <td> {{employee.city}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>Telephone: </b></label></td>
+          <td> {{employee.phoneNumber}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>Email: </b></label></td>
+          <td> {{employee.email}}</td>
+        </tr>
+
+        <tr>
+          <td><label><b>Designation: </b></label></td>
+          <td> {{employee.designation}}</td>
+        </tr>
+
+
+      </table>
+
+      <button type="submit" class="btn" id="submitbtn" (click)="list()">Back to Employee List</button>
+
+
+    </div>
+  </div>
+
+<!--<h2>Employee Details</h2>-->
+
+<!--<hr/>-->
+<!--<div *ngIf="employee">-->
+<!--  <div>-->
+<!--    <label><b>Emp Id: </b></label> {{employee.empId}}-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label><b>FirstName: </b></label> {{employee.firstName}}-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label><b>LastName: </b></label> {{employee.lastName}}-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label><b>Email: </b></label> {{employee.email}}-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label><b>Designation: </b></label> {{employee.designation}}-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label><b>Hourlypay: </b></label> {{employee.hourlypay}}-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label><b>maximumWorkingHours: </b></label> {{employee.maximumWorkingHours}}-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<br>-->
+<!--<br>-->
+<!--<button (click)="list()" class="btn btn-primary">Back to Employee List</button><br>-->
 
 
 

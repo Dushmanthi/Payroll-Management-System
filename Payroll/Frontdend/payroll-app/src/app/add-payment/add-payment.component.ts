@@ -2,12 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {PaymentService} from '../payment.service';
 import {Payment} from './payment';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Observable} from 'rxjs';
 @Component({
   selector: 'app-add-payment',
   templateUrl: './add-payment.component.html',
   styleUrls: ['./add-payment.component.css']
 })
 export class AddPaymentComponent implements OnInit {
+  form = new FormGroup({
+    empId: new FormControl(0,Validators.required),
+    year : new FormControl(0,Validators.required),
+    month:new FormControl('',Validators.required),
+    day : new FormControl(0,Validators.required),
+    workingHours : new FormControl(0,Validators.required),
+    hourlypay: new FormControl(0,Validators.required)
+  });
+  payments: Observable<Payment[]>;
 payment: Payment = new Payment();
 submitted = false;
   constructor(private paymentService: PaymentService ,private router: Router) { }
@@ -34,7 +45,8 @@ submitted = false;
       }
 
       gotoList() {
-          this.router.navigate(['/register-success']);
+      //  this.payments = this.paymentService.getPaymentList();
+          this.router.navigate(['/view-payment']);
         }
 
 }

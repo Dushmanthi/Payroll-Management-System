@@ -1,23 +1,39 @@
-<app-menu></app-menu>
 <div class="container col-lg-6">
-  <h4 class="text-center">Login </h4>
+  <div class="text-center">
+  <i class="fa fa-credit-card" style="font-size:22px;color:midnightblue; text-align: center;font-weight: bold;">PAYROLL MANAGEMENT SYSTEM </i>
+  </div>
+
   <div class="card">
     <div class="card-body">
+      <h5>Sign In</h5>
       <form class="form-group" (ngSubmit)="signin()" [formGroup]="loginForm">
-<!--        <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>-->
-<!--        <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>-->
+        <!--        <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>-->
+        <!--        <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>-->
 
         <div class="form-group">
           <label for="username">Username:</label>
-          <input type="text" class="form-control" id="username" placeholder="john" [formControlName]="'username'" >
+          <input type="text" class="form-control" id="username" placeholder="john" [formControlName]="'username'"
+                 [ngClass]="{'is-invalid':loginForm.get('username').touched && loginForm.get('username').invalid}"/>
+          <div *ngIf="loginForm.get('username').touched && loginForm.get('username').invalid"
+               class="invalid-feedback">
+            <div *ngIf="loginForm.get('username').errors.required">Username is required</div>
+          </div>
         </div>
 
         <div class="form-group">
           <label for="password">Password:</label>
-          <input type="password" class="form-control" id="password" placeholder="password" [formControlName]="'password'" >
+          <input type="password" class="form-control" id="password" placeholder="password"
+                 [formControlName]="'password'"
+                 [ngClass]="{'is-invalid':loginForm.get('password').touched && loginForm.get('password').invalid}"/>
+          <div *ngIf="loginForm.get('password').touched && loginForm.get('password').invalid"
+               class="invalid-feedback">
+            <div *ngIf="loginForm.get('password').errors.required">Password is required</div>
+            <div *ngIf="loginForm.get('password').errors.minlength">Password must be at least 6 characters</div>
+          </div>
         </div>
 
-        <button type="submit" class="btn btn-success">Login</button>
+        <button type="submit" class="btn btn-primary" id="submitbtn" [disabled]="!loginForm.valid">Sign In</button>
+        <button type="submit" class="btn btn-primary" id="submitbtn" (click)="signup()">Sign Up</button>
       </form>
     </div>
   </div>

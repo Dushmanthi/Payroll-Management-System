@@ -1,8 +1,8 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Payment} from '../add-payment/payment';
 import {PaymentService} from '../payment.service';
-// import { ViewPaymentsComponent } from './view-payments/view-payments.component';
+//import { ViewPaymentsComponent } from './view-payments/view-payments.component';
 
 @Component({
   selector: 'app-payment-details',
@@ -17,8 +17,8 @@ export class PaymentDetailsComponent implements OnInit {
   ngOnInit() {
     this.payment = new Payment();
     this.empId = this.route.snapshot.params['empId'];
-
-    this.paymentService.getPayment(this.empId)
+    console.log(this.empId);
+    this.paymentService.getPayment(this.empId )
       .subscribe(data => {
         console.log("data");
         console.log(data);

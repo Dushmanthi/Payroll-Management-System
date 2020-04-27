@@ -1,8 +1,6 @@
 #submitbtn{
   border-radius: 20px;
   float:right;
-  /*background-color:midnightblue;*/
-
 }
 
 .table.table1{
@@ -15,12 +13,24 @@
 
 .table.table2{
   color: darkblue;
+}
+
+th, td {
   text-align: center;
 }
 
-th,td {
-  vertical-align: center;
+.icon{
+  text-align: center;
 }
+
+h5{
+  text-align: left;
+}
+
+/*tr:nth-child(even) {*/
+/*  text-align: center;*/
+/*  height:500px;*/
+/*}*/
 
 
 /*tb.i.fa.tab1 {*/

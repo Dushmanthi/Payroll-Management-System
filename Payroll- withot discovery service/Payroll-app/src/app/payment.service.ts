@@ -13,20 +13,33 @@ export class PaymentService {
     return this.httpClient.post('http://localhost:8383/api/payments/add-payments',payment);
   }
 
-  getPayment(empId: number): Observable<any> {
-    return this.httpClient.get('http://localhost:8383/api/payments/findPayment/'+empId);
+  getPayment(id: number): Observable<any> {
+    return this.httpClient.get('http://localhost:8383/api/payments/findPayment/'+id);
   }
 
   getPaymentList(): Observable<any> {
     return this.httpClient.get('http://localhost:8383/api/payments/findAllPayment');
   }
 
-  updatePayment(empId: number, value: any): Observable<Object> {
-    return this.httpClient.put('http://localhost:8383/api/payments/updatePayment/'+empId, value);
+  getMonthlySalary(empId: number,year:number,month:string):Observable<any> {
+    return this.httpClient.get('http://localhost:8383/api/payments/monthlySalary/'+empId+'/'+year+'/'+month);
   }
 
-  deletePayment(empId: number): Observable<any> {
-    return this.httpClient.delete('http://paymentService:8383/api/payments/deletePayment/'+empId, { responseType: 'text' });
+  updatePayment(id: number, value: any): Observable<Object> {
+    return this.httpClient.put('http://localhost:8383/api/payments/updatePayment/'+id, value);
+  }
+
+  deletePayment(id: number): Observable<any> {
+    return this.httpClient.delete('http://localhost:8383/api/payments/deletePayment/'+id, { responseType: 'text' });
+  }
+
+  getSalary(empId: number): Observable<any> {
+    return this.httpClient.get('http://localhost:8383/api/payments/findPayment/'+empId);
+  }
+
+  addSalary(salary: Object):Observable<Object>{
+    console.log("save salary");
+    return this.httpClient.post('http://localhost:8383/api/payments/add-salary',salary);
   }
 
 }

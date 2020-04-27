@@ -1,10 +1,26 @@
-<div class="container">
-  <h3>Register successful, click <a href="/login">here</a> to Login</h3>
+
+<div class="container col-lg-6" >
+
+  <div [hidden]="submitted" >
+    <h5><b>Register successful ! </b></h5>
+    <form name="attendance"   (ngSubmit)="onSubmit()"  [formGroup]="form">
+
+
+      <button (click)="signin()" type="submit" class="btn btn-success" id="submitbtn">Sign In</button>
+    </form>
+
+  </div>
+
 </div>
 
-<app-menu></app-menu>
 
-<div class="container"  >
 
-  <h5>Register successful ! </h5>
-  click <a href="/login">here</a> to Login</div>
+
+
+
+
+
+
+
+
+

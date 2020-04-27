@@ -22,8 +22,9 @@ export class ViewPaymentsComponent implements OnInit {
     this.payments = this.paymentService.getPaymentList();
   }
 
-  deletePayment(empId:number){
-    this.paymentService.deletePayment(empId)
+  deletePayment(id:number){
+    console.log(id);
+    this.paymentService.deletePayment(id)
       .subscribe(data=>{
           console.log(data);
           this.reloadData();
@@ -31,15 +32,25 @@ export class ViewPaymentsComponent implements OnInit {
         error=>{
           console.log(error);
         });
+
   }
 
-  paymentDetails(empId:number){
-    this.router.navigate(['payment-details',empId]);
+  paymentDetails(id:number){
+    console.log("details"+id);
+    this.router.navigate(['payment-details',id]);
   }
 
-  updatePayment(empId: number){
-    console.log("clikkkkkk");
-    this.router.navigate(['update-payment', empId]);
+  updatePayment(id: number){
+    console.log("update"+id);
+    this.router.navigate(['update-payment', id]);
+  }
+
+  addPayment(){
+    this.router.navigate(['add-payment']);
+  }
+
+  viewMonthlyPayment(){
+    this.router.navigate(['monthly-payment']);
   }
 
 

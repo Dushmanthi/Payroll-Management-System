@@ -1,46 +1,207 @@
 <app-menu></app-menu>
+<div class="container col-lg-6">
+  <div [hidden]="submitted">
+    <div>
+      <h5><b>EMPLOYEE UPDATE FORM</b></h5>
 
-<h3>Update Employee</h3>
-<div [hidden]="submitted" style="width: 400px;">
-    <form name="employee"  (ngSubmit)="onSubmit()">
+      <form  name="employee" (ngSubmit)="onSubmit()" class="emp"  [formGroup]="form">
 
-      <div class="form-group">
-        <label for="empId">Employee Id:</label>
-        <input type="text" class="form-control" id="empId" placeholder="1001" required [(ngModel)]="employee.empId" name="empId">
-      </div>
-
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="firstName">First Name:</label>
-          <input type="text" class="form-control" id="firstName" placeholder="FirstName" required [(ngModel)]="employee.firstName" name="firstName">
+        <div class="form-group">
+          <label for="empId">Employee Id:</label>
+          <input type="text" class="form-control" id="empId" placeholder="1001" required
+                 [(ngModel)]="employee.empId" name="empId" formControlName="empId"
+                 [ngClass]="{'is-invalid':form.get('empId').touched && form.get('empId').invalid}"/>
+          <div *ngIf="form.get('empId').touched && form.get('empId').invalid" class="invalid-feedback">
+            <div *ngIf="form.get('empId').errors.required">EmpId is required</div>
+          </div>
         </div>
-        <div class="form-group col-md-6">
-          <label for="lastName">Last name:</label>
-          <input type="text" class="form-control" id="lastName" placeholder="LastName" required [(ngModel)]="employee.lastName" name="lastName">
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="firstName">First Name:</label>
+            <input type="text" class="form-control" id="firstName" placeholder="FirstName" required
+                   [(ngModel)]="employee.firstName" name="firstName" formControlName="firstName"
+                   [ngClass]="{'is-invalid':form.get('firstName').touched && form.get('firstName').invalid}" />
+            <div *ngIf="form.get('firstName').touched && form.get('firstName').invalid" class="invalid-feedback">
+              <div *ngIf="form.get('firstName').errors.required">First Name is required</div>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="lastName">Last name:</label>
+            <input type="text" class="form-control" id="lastName" placeholder="LastName" required
+                   [(ngModel)]="employee.lastName" name="lastName" formControlName="lastName"
+                   [ngClass]="{'is-invalid':form.get('lastName').touched && form.get('lastName').invalid}" />
+            <div *ngIf="form.get('lastName').touched && form.get('lastName').invalid" class="invalid-feedback">
+              <div *ngIf="form.get('lastName').errors.required">Last Name is required</div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="form-group ">
-        <label for="email">Email:</label>
-        <input type="email" class="form-control" id="email" placeholder="Email" required [(ngModel)]="employee.email" name="email">
-      </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="number">Address No:</label>
+            <input type="text" class="form-control" id="number" placeholder="Number" required
+                   [(ngModel)]="employee.number" name="number" formControlName="number"
+                   [ngClass]="{'is-invalid':form.get('number').touched && form.get('number').invalid}" />
+            <div *ngIf="form.get('number').touched && form.get('number').invalid" class="invalid-feedback">
+              <div *ngIf="form.get('number').errors.required">Address Number is required</div>
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="street">Street:</label>
+            <input type="text" class="form-control" id="street" placeholder="Street" required
+                   [(ngModel)]="employee.street" name="street" formControlName="street"
+                   [ngClass]="{'is-invalid':form.get('street').touched && form.get('street').invalid}" />
+            <div *ngIf="form.get('street').touched && form.get('street').invalid" class="invalid-feedback">
+              <div *ngIf="form.get('street').errors.required">Street is required</div>
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="city">City:</label>
+            <input type="text" class="form-control" id="city" placeholder="City" required
+                   [(ngModel)]="employee.city" name="city" formControlName="city"
+                   [ngClass]="{'is-invalid':form.get('city').touched && form.get('city').invalid}" />
+            <div *ngIf="form.get('city').touched && form.get('city').invalid" class="invalid-feedback">
+              <div *ngIf="form.get('city').errors.required">City is required</div>
+            </div>
+          </div>
+        </div>
 
-    <div class="form-row">
-      <div class="form-group col-md-4">
-        <label for="designation">Designation:</label>
-        <input type="text" class="form-control" id="designation" placeholder="Software Engineer" required [(ngModel)]="employee.designation" name="designation">
-      </div>
-      <div class="form-group col-md-4">
-        <label for="hourlypay">Hourlypay:</label>
-        <input type="text" class="form-control" id="hourlypay" placeholder="200.00" required [(ngModel)]="employee.hourlypay" name="hourlypay">
-      </div>
-      <div class="form-group col-md-4">
-        <label for="maximumWorkingHours">Max Working Hours:</label>
-        <input type="text" class="form-control" id="maximumWorkingHours" placeholder="9" required [(ngModel)]="employee.maximumWorkingHours" name="maximumWorkingHours">
-      </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="phoneNumber">Mobile:</label>
+            <input type="text" class="form-control" id="phoneNumber" placeholder="071234567" required
+                   [(ngModel)]="employee.phoneNumber" name="phoneNumber" formControlName="phoneNumber"
+                   [ngClass]="{'is-invalid':form.get('phoneNumber').touched && form.get('phoneNumber').invalid}" />
+            <div *ngIf="form.get('phoneNumber').touched && form.get('phoneNumber').invalid" class="invalid-feedback">
+              <div  *ngIf="form.get('phoneNumber').errors.required">Phone Number is required</div>
+              <div  *ngIf="form.get('phoneNumber').errors.minLength">Phone Number must have 10 numbers</div>
+            </div>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Email" required
+                   [(ngModel)]="employee.email" name="email" formControlName="email"
+                   [ngClass]="{'is-invalid':form.get('email').touched && form.get('email').invalid}" />
+            <div *ngIf="form.get('email').touched && form.get('email').invalid" class="invalid-feedback">
+              <div *ngIf="form.get('email').errors.required">Email is required</div>
+              <div *ngIf="form.get('email').errors.email">Email must be a valid email address</div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="designation">Designation:</label>
+          <input type="text" class="form-control" id="designation" placeholder="Software Engineer" required
+                 [(ngModel)]="employee.designation" name="designation" formControlName="designation"
+                 [ngClass]="{'is-invalid':form.get('designation').touched && form.get('designation').invalid}" />
+          <div  *ngIf="form.get('designation').touched && form.get('designation').invalid" class="invalid-feedback">
+            <div  *ngIf="form.get('designation').errors.required">Designation is required</div>
+          </div>
+
+        </div>
+
+<!--        <div class="form-row">-->
+<!--          <div class="form-group col-md-6">-->
+<!--            <label for="hourlypay">Hourlypay:</label>-->
+<!--            <input type="text" class="form-control" id="hourlypay" placeholder="200.00" required-->
+<!--                   [(ngModel)]="employee.hourlypay" name="hourlypay" formControlName="hourlypay"-->
+<!--                   [ngClass]="{'is-invalid':form.get('hourlypay').touched && form.get('hourlypay').invalid}" />-->
+<!--            <div *ngIf="form.get('hourlypay').touched && form.get('hourlypay').invalid" class="invalid-feedback">-->
+<!--              <div *ngIf="form.get('hourlypay').errors.required">Hourlypay is required</div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="form-group col-md-6">-->
+<!--            <label for="maximumWorkingHours">Max Working Hours:</label>-->
+<!--            <input type="text" class="form-control" id="maximumWorkingHours" placeholder="9" required-->
+<!--                   [(ngModel)]="employee.maximumWorkingHours" name="maximumWorkingHours" formControlName="maximumWorkingHours"-->
+<!--                   [ngClass]="{'is-invalid':form.get('maximumWorkingHours').touched && form.get('maximumWorkingHours').invalid}" />-->
+<!--            <div *ngIf="form.get('maximumWorkingHours').touched && form.get('maximumWorkingHours').invalid" class="invalid-feedback">-->
+<!--              <div *ngIf="form.get('maximumWorkingHours').errors.required">Maximum Working Hours is required</div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+        <!--      <div class="form-group">-->
+        <!--        <label for="password">Password:</label>-->
+        <!--        <input type="password" class="form-control" id="password" placeholder="Password" >-->
+        <!--      </div>-->
+
+        <!-- <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+          <label class="custom-control-label" for="customRadioInline1">Active</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+          <label class="custom-control-label" for="customRadioInline2">Inactive</label>
+        </div> -->
+
+        <!-- <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Check me out
+            </label>
+          </div>
+        </div> -->
+<!--        [disabled]="!form.valid"-->
+        <button type="submit" class="btn" id="submitbtn" >Update Employee</button>
+      </form>
+
     </div>
-
-
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
+  </div>
 </div>
+
+
+
+
+
+
+<!--<app-menu></app-menu>-->
+
+<!--<h3>Update Employee</h3>-->
+<!--<div [hidden]="submitted" style="width: 400px;">-->
+<!--    <form name="employee"  (ngSubmit)="onSubmit()">-->
+
+<!--      <div class="form-group">-->
+<!--        <label for="empId">Employee Id:</label>-->
+<!--        <input type="text" class="form-control" id="empId" placeholder="1001" required [(ngModel)]="employee.empId" name="empId">-->
+<!--      </div>-->
+
+<!--      <div class="form-row">-->
+<!--        <div class="form-group col-md-6">-->
+<!--          <label for="firstName">First Name:</label>-->
+<!--          <input type="text" class="form-control" id="firstName" placeholder="FirstName" required [(ngModel)]="employee.firstName" name="firstName">-->
+<!--        </div>-->
+<!--        <div class="form-group col-md-6">-->
+<!--          <label for="lastName">Last name:</label>-->
+<!--          <input type="text" class="form-control" id="lastName" placeholder="LastName" required [(ngModel)]="employee.lastName" name="lastName">-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="form-group ">-->
+<!--        <label for="email">Email:</label>-->
+<!--        <input type="email" class="form-control" id="email" placeholder="Email" required [(ngModel)]="employee.email" name="email">-->
+<!--      </div>-->
+
+<!--    <div class="form-row">-->
+<!--      <div class="form-group col-md-4">-->
+<!--        <label for="designation">Designation:</label>-->
+<!--        <input type="text" class="form-control" id="designation" placeholder="Software Engineer" required [(ngModel)]="employee.designation" name="designation">-->
+<!--      </div>-->
+<!--      <div class="form-group col-md-4">-->
+<!--        <label for="hourlypay">Hourlypay:</label>-->
+<!--        <input type="text" class="form-control" id="hourlypay" placeholder="200.00" required [(ngModel)]="employee.hourlypay" name="hourlypay">-->
+<!--      </div>-->
+<!--      <div class="form-group col-md-4">-->
+<!--        <label for="maximumWorkingHours">Max Working Hours:</label>-->
+<!--        <input type="text" class="form-control" id="maximumWorkingHours" placeholder="9" required [(ngModel)]="employee.maximumWorkingHours" name="maximumWorkingHours">-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+<!--    <button type="submit" class="btn btn-success">Submit</button>-->
+<!--  </form>-->
+<!--</div>-->

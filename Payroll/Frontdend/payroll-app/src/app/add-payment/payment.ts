@@ -1,6 +1,6 @@
-
 export class Payment {
-  empId: number;
+    id: number;
+    empId: number;
     year : number;
     month: string;
     day : number;

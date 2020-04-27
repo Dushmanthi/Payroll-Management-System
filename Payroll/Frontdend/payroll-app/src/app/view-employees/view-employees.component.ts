@@ -23,8 +23,8 @@ export class ViewEmployeesComponent implements OnInit {
     this.employees = this.employeeService.getEmployeeList();
   }
 
-  deleteEmployee(empId:number){
-    this.employeeService.deleteEmployee(empId)
+  deleteEmployee(id:number){
+    this.employeeService.deleteEmployee(id)
       .subscribe(data=>{
           console.log(data);
           this.reloadData();
@@ -34,13 +34,16 @@ export class ViewEmployeesComponent implements OnInit {
         });
   }
 
-  employeeDetails(empId:number){
-    this.router.navigate(['employee-details',empId]);
+  employeeDetails(id:number){
+    this.router.navigate(['employee-details',id]);
   }
 
-  updateEmployee(empId: number){
-    console.log("clikkkkkk");
-    this.router.navigate(['update-employee', empId]);
+  updateEmployee(id: number){
+    this.router.navigate(['update-employee', id]);
+  }
+
+  addEmployee(){
+    this.router.navigate(['add-employee']);
   }
 
 

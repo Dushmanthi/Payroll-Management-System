@@ -22,8 +22,8 @@ export class ViewAttendanceComponent implements OnInit {
     this.attendances = this.attendanceService.getAttendanceList();
   }
 
-  deleteAttendance(empId:number){
-    this.attendanceService.deleteAttendance(empId)
+  deleteAttendance(id:number){
+    this.attendanceService.deleteAttendance(id)
       .subscribe(data=>{
         console.log(data);
         this.reloadData();
@@ -33,13 +33,20 @@ export class ViewAttendanceComponent implements OnInit {
         });
   }
 
-  attendanceDetails(empId:number){
-    this.router.navigate(['attendance-details',empId]);
+  attendanceDetails(id:number){
+    this.router.navigate(['attendance-details',id]);
   }
 
-  updateAttendance(empId: number){
-    console.log("clikkkkkk");
-    this.router.navigate(['update-attendance', empId]);
+  updateAttendance(id: number){
+    this.router.navigate(['update-attendance', id]);
+  }
+
+   addAttendance(){
+    this.router.navigate(['add-attendance']);
+  }
+
+  viewMonthlyAttendance(){
+    this.router.navigate(['monthly-attendance']);
   }
 
 

@@ -13,19 +13,24 @@ export class AddAttendanceService {
   return this.httpClient.post('http://localhost:8282/api/attendance/saveAttendance',attendance);
   }
 
-  getAttendance(empId: number): Observable<any> {
-    return this.httpClient.get('http://localhost:8282/api/attendance/findAttendance/'+empId);
+  getAttendance(id: number): Observable<any> {
+    return this.httpClient.get('http://localhost:8282/api/attendance/findAttendanceById/'+id);
   }
 
   getAttendanceList(): Observable<any> {
     return this.httpClient.get('http://localhost:8282/api/attendance/findAllAttendance');
   }
 
-  updateAttendance(empId: number, value: any): Observable<Object> {
-    return this.httpClient.put('http://localhost:8282/api/attendance/updateAttendance/'+empId, value);
+
+  getMonthlyAttendanceList(empId: number,year:number,month:string):Observable<any> {
+    return this.httpClient.get('http://localhost:8282/api/attendance/monthlyAttendance/'+empId+'/'+year+'/'+month);
   }
 
-  deleteAttendance(empId: number): Observable<any> {
-    return this.httpClient.delete('http://localhost:8282/api/attendance/attendance/'+empId, { responseType: 'text' });
+  updateAttendance(id: number, value: any): Observable<Object> {
+    return this.httpClient.put('http://localhost:8282/api/attendance/updateAttendance/'+id, value);
+  }
+
+  deleteAttendance(id: number): Observable<any> {
+    return this.httpClient.delete('http://localhost:8282/api/attendance/deleteAttendance/'+id, { responseType: 'text' });
   }
 }

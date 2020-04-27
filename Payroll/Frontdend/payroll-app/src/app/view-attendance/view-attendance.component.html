@@ -1,34 +1,63 @@
 <app-menu></app-menu>
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h2>Attendance List</h2>
-  </div>
-  <div class="panel-body">
-    <table class="table table-striped">
-      <thead>
+    <table class="table table1">
       <tr>
-        <th>EmpId</th>
-        <th>year</th>
-        <th>month</th>
-        <th>day</th>
-        <th>isPresent</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let attendance of attendances | async">
-        <td>{{attendance.empId}}</td>
-        <td>{{attendance.year}}</td>
-        <td>{{attendance.month}}</td>
-        <td>{{attendance.day}}</td>
-        <td>{{attendance.isPresent}}</td>
-
-        <td><button (click)="deleteAttendance(attendance.empId)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
-          <button (click)="attendanceDetails(attendance.empId)" class="btn btn-info" style="margin-left: 10px">Details</button>
-          <button (click)="updateAttendance(attendance.empId)" class="btn btn-info" style="margin-left: 10px">Update</button>
+        <td><h5><b>Attendance List</b></h5></td>
+        <td>
+          <button type="submit" class="btn btn-primary" id="submitbtn" (click)="addAttendance()"><i
+            class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+            Add Attendance
+          </button>
+          <button type="submit" class="btn btn-primary" id="submitbtn" (click)="viewMonthlyAttendance()"><i
+            class="fa fa-calendar" aria-hidden="true"></i>
+            Monthly Attendance
+          </button>
         </td>
       </tr>
-      </tbody>
     </table>
+  </div>
+  <div class="panel-body">
+    <div class="table-responsive-lg">
+      <table class="table table-striped table2">
+        <thead>
+        <tr>
 
+          <th style="display: none;">Id</th>
+          <th>EmpId</th>
+          <th>Year</th>
+          <th>Month</th>
+          <th>Day</th>
+          <th>WorkingHours</th>
+          <th>IsPresent</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let attendance of attendances | async">
+          <td style="display: none;">{{attendance.year}}</td>
+          <td>{{attendance.empId}}</td>
+          <td>{{attendance.year}}</td>
+          <td>{{attendance.month}}</td>
+          <td>{{attendance.day}}</td>
+          <td>{{attendance.workingHours}}</td>
+          <td>{{attendance.isPresent}}</td>
+
+          <td class="icon">
+            <i (click)="attendanceDetails(attendance.id)" class="fa fa-eye tab1" title="View"
+               style="font-size:22px;color:dimgray; margin-right:15px; cursor: pointer;"></i>
+            <i (click)="updateAttendance(attendance.id)" class="fa fa-pencil tab1" title="Edit"
+               style="font-size:22px;color:dimgray; margin-right:15px; cursor: pointer;"></i>
+            <i (click)="deleteAttendance(attendance.id)" class="fa fa-trash tab1" title="Delete"
+               style="font-size:22px;color:dimgray; cursor: pointer;"></i>
+          </td>
+
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
   </div>
 </div>
+
+

@@ -1,0 +1,32 @@
+#submitbtn{
+  border-radius: 20px;
+  float:right;
+  margin: 10px;
+}
+
+.table.table1{
+  border-style:hidden;
+}
+
+.panel{
+  margin: 20px;
+}
+
+.table.table2{
+  color: darkblue;
+}
+
+th, td {
+  text-align: center;
+}
+
+.icon{
+  text-align: center;
+}
+
+h5{
+  text-align: left;
+}
+
+
+

@@ -1,57 +1,62 @@
-<app-menu></app-menu>
 <div class="container col-lg-6">
-  <h4 class="text-center">Signup as a New User</h4>
+  <div class="text-center">
+    <i class="fa fa-credit-card" style="font-size:22px;color:midnightblue; text-align: center;font-weight: bold;">PAYROLL MANAGEMENT SYSTEM </i>
+  </div>
+
   <div class="card">
     <div class="card-body">
+      <h5>Sign Up</h5>
       <form class="form-group" (ngSubmit)="signup()" [formGroup]="registerForm">
-        <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
-        <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
+<!--        <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>-->
+<!--        <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>-->
 
         <div class="form-group">
           <label for="username">Username:</label>
-          <input type="text" class="form-control" id="username" placeholder="john" [formControlName]="'username'" >
+          <input type="text" class="form-control" id="username" placeholder="john" [formControlName]="'username'"
+                 [ngClass]="{'is-invalid':registerForm.get('username').touched && registerForm.get('username').invalid}"/>
+          <div *ngIf="registerForm.get('username').touched && registerForm.get('username').invalid"
+               class="invalid-feedback">
+            <div *ngIf="registerForm.get('username').errors.required">Username is required</div>
+          </div>
         </div>
 
         <div class="form-group">
           <label for="password">Password:</label>
-          <input type="password" class="form-control" id="password" placeholder="password" [formControlName]="'password'" >
+          <input type="password" class="form-control" id="password" placeholder="password"
+                 [formControlName]="'password'"
+                 [ngClass]="{'is-invalid':registerForm.get('password').touched && registerForm.get('password').invalid}"/>
+          <div *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid"
+               class="invalid-feedback">
+            <div *ngIf="registerForm.get('password').errors.required">Password is required</div>
+            <div *ngIf="registerForm.get('password').errors.minlength">Password must be at least 6 characters</div>
+          </div>
         </div>
 
         <div class="form-group">
           <label for="confirmPassword">Password:</label>
-          <input type="password" class="form-control" id="confirmPassword" placeholder=" confirm password" [formControlName]="'confirmPassword'" >
+          <input type="password" class="form-control" id="confirmPassword" placeholder=" confirm password"
+                 [formControlName]="'confirmPassword'"
+                 [ngClass]="{'is-invalid':registerForm.get('password').touched && registerForm.get('confirmPassword').invalid}"/>
+          <div *ngIf="registerForm.get('confirmPassword').touched && registerForm.get('confirmPassword').invalid"
+               class="invalid-feedback">
+            <div *ngIf="registerForm.get('confirmPassword').errors.required">Confirm Password is required</div>
+            <div *ngIf="registerForm.get('confirmPassword').errors.minlength">Confirm Password must be at least 6 characters</div>
+          </div>
         </div>
-        <button type="submit" class="btn btn-success">Sign Up</button>
+
+        <button type="submit" class="btn btn-primary"  id="submitbtn" [disabled]="!registerForm.valid">Sign Up</button>
+        <button type="submit" class="btn btn-primary" id="submitbtn" (click)="signin()">Back</button>
       </form>
     </div>
   </div>
 </div>
 
-<!--<div class="container col-lg-6">-->
-
-<!--    <div>-->
-<!--        <h5><u>Signup</u></h5>-->
-<!--        <form name="register" #f="ngForm" (ngSubmit)="signup()" [formGroup]="registerForm">-->
-<!--            <div class="form-group">-->
-<!--                <label for="username">Username:</label>-->
-<!--                <input type="text" class="form-control" id="username" placeholder="john" [formControlName]="'username'" >-->
-<!--              </div>-->
-
-<!--              <div class="form-group">-->
-<!--                <label for="password">Password:</label>-->
-<!--                <input type="password" class="form-control" id="password" placeholder="password" [formControlName]="'password'" >-->
-<!--              </div>-->
-
-<!--              <div class="form-group">-->
-<!--                <label for="confirmPassword">Password:</label>-->
-<!--                <input type="password" class="form-control" id="confirmPassword" placeholder=" confirm password" [formControlName]="'confirmPassword'" >-->
-<!--              </div>-->
-
-<!--              <button type="submit" class="btn btn-primary">Sign up</button>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--  </div>-->
-
+<div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Success!</strong> Data has been saved successfully.
+  <button  (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 
 
 
