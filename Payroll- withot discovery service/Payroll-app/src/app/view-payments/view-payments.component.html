@@ -1,0 +1,38 @@
+<app-menu></app-menu>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Payment List</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>EmpId</th>
+        <th>year</th>
+        <th>month</th>
+        <th>day</th>
+        <th>workingHours</th>
+        <th>hourlypay</th>
+        <th>daySalary</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let payment of payments | async">
+        <td>{{payment.empId}}</td>
+        <td>{{payment.year}}</td>
+        <td>{{payment.month}}</td>
+        <td>{{payment.day}}</td>
+        <td>{{payment.workingHours}}</td>
+        <td>{{payment.hourlypay}}</td>
+        <td>{{payment.daySalary}}</td>
+
+        <td><button (click)="deletePayment(payment.empId)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
+          <button (click)="paymentDetails(payment.empId)" class="btn btn-info" style="margin-left: 10px">Details</button>
+          <button (click)="updatePayment(payment.empId)" class="btn btn-info" style="margin-left: 10px">Update</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

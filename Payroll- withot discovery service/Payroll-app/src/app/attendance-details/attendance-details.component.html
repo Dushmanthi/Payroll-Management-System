@@ -1,0 +1,29 @@
+<app-menu></app-menu>
+
+<h2>Attendance Details</h2>
+
+<hr/>
+<div *ngIf="attendance">
+  <div>
+    <label><b>Emp Id: </b></label> {{attendance.empId}}
+  </div>
+  <div>
+    <label><b>Year: </b></label> {{attendance.year}}
+  </div>
+  <div>
+    <label><b>Month: </b></label> {{attendance.month}}
+  </div>
+  <div>
+    <label><b>Day: </b></label> {{attendance.day}}
+  </div>
+  <div>
+    <label><b>Working Hours: </b></label> {{attendance.workingHours}}
+  </div>
+  <div>
+    <label><b>isPresent: </b></label> {{attendance.isPresent}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Attendance List</button><br>

@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: zuul-service
+
+server:
+  port: 8099
+
+ribbon:
+  eureka:
+    enabled: true
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+
+zuul:
+  routes:
+    attendance-service:
+      path: /zuul/**
+      serviceId: attendance-service
+    payment-Service:
+      path: /api/payments/**
+        serviceId: payment-service
+    employee-Service:
+      path: /api/employees/**
+        serviceId: employee-service
+    auth-service:
+      path: /api/auth/**
+        serviceId: auth-service
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000

@@ -1,0 +1,34 @@
+<app-menu></app-menu>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Attendance List</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>EmpId</th>
+        <th>year</th>
+        <th>month</th>
+        <th>day</th>
+        <th>isPresent</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let attendance of attendances | async">
+        <td>{{attendance.empId}}</td>
+        <td>{{attendance.year}}</td>
+        <td>{{attendance.month}}</td>
+        <td>{{attendance.day}}</td>
+        <td>{{attendance.isPresent}}</td>
+
+        <td><button (click)="deleteAttendance(attendance.empId)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
+          <button (click)="attendanceDetails(attendance.empId)" class="btn btn-info" style="margin-left: 10px">Details</button>
+          <button (click)="updateAttendance(attendance.empId)" class="btn btn-info" style="margin-left: 10px">Update</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
