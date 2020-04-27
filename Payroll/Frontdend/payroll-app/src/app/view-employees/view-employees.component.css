@@ -1,0 +1,37 @@
+#submitbtn{
+  border-radius: 20px;
+  float:right;
+  /*background-color:midnightblue;*/
+
+}
+
+.table.table1{
+  border-style:hidden;
+}
+
+.panel{
+  margin: 20px;
+}
+
+.table.table2{
+  color: darkblue;
+  text-align: center;
+}
+
+th,td {
+  vertical-align: center;
+}
+
+
+/*tb.i.fa.tab1 {*/
+/*  font-size:110px;*/
+/*  color: darkblue;*/
+/*  align: center;*/
+/*  padding-bottom: 10px;*/
+/*}*/
+
+/*td.i.fa.tab1 {*/
+/*  vertical-align: center;*/
+/*}*/
+
+

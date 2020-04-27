@@ -1,0 +1,36 @@
+#main{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  height: 85vh;
+  width: 100%;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.card {
+  padding-top: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+  transition: 0.3s;
+  width: 40%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+i.fa.darkblue {
+  font-size:110px;
+  color: darkblue;
+  align: center;
+  padding-bottom: 10px;
+}
+
+a.card-body {
+  color: darkblue;
+}
+
+a.card-body:hover {
+  text-decoration: none;
+}

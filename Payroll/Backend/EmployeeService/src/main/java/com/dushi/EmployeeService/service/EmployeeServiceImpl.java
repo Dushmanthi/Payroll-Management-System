@@ -2,22 +2,20 @@ package com.dushi.EmployeeService.service;
 
 import com.dushi.EmployeeService.hystrix.AttendanceCommand;
 import com.dushi.EmployeeService.hystrix.PaymentCommand;
-import com.dushi.EmployeeService.model.EmployeeDetails;
+import com.dushi.EmployeeService.model.Employee;
 import com.dushi.EmployeeService.repository.EmployeeRepository;
 import com.dushi.EmployeeService.sharedModel.Attendance;
 import com.dushi.EmployeeService.sharedModel.Payment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.domain.Example;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -35,22 +33,22 @@ public class EmployeeServiceImpl implements EmployeeService {
     RestTemplate restTemplate;
 
     @Override
-    public EmployeeDetails saveEmployee(EmployeeDetails employeeDetails) {
-        return employeeRepository.save(employeeDetails);
+    public Employee saveEmployee(Employee employee) {
+        return employeeRepository.save(employee);
 
     }
 
     //attendance
-    public Attendance[] fetchAttendance(EmployeeDetails employeeDetails){
+    public Attendance[] fetchAttendance(Employee employee) {
         HttpHeaders httpHeaders = new HttpHeaders();
-        AttendanceCommand attendanceCommand = new AttendanceCommand(employeeDetails,httpHeaders,restTemplate);
+        AttendanceCommand attendanceCommand = new AttendanceCommand(employee, httpHeaders, restTemplate);
         return attendanceCommand.execute();
     }
 
     //payment
-    public Payment[] fetchPayment(EmployeeDetails employeeDetails){
+    public Payment[] fetchPayment(Employee employee) {
         HttpHeaders httpHeaders = new HttpHeaders();
-        PaymentCommand paymentCommand = new PaymentCommand(employeeDetails,httpHeaders,restTemplate);
+        PaymentCommand paymentCommand = new PaymentCommand(employee, httpHeaders, restTemplate);
         return paymentCommand.execute();
     }
 
@@ -81,12 +79,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     //
     @Override
-    public EmployeeDetails findById(Integer id) {
-        Optional<EmployeeDetails> employeeDetails1 = employeeRepository.findByEmpId(id);
-        System.out.println("option value"+employeeDetails1);
+    public Employee findByEmployeeId(Integer id) {
+        Optional<Employee> employeeDetails1 = employeeRepository.findByEmpId(id);
+        System.out.println("option value" + employeeDetails1);
 
-        if(employeeDetails1.isPresent()) {
-            EmployeeDetails employee = employeeDetails1.get();
+        if (employeeDetails1.isPresent()) {
+            Employee employee = employeeDetails1.get();
 //            System.out.println(employee.getEmpId());
             employee.setAttendances(fetchAttendance(employee));
             employee.setPayments(fetchPayment(employee));
@@ -101,45 +99,69 @@ public class EmployeeServiceImpl implements EmployeeService {
 //            }
 //            employee.setAttendances(body);
             return employee;
-        }
-        else {
+        } else {
             System.out.println("null");
             return null;
 
         }
 
-        }
-
+    }
 
     //find all employee
     @Override
-    public List<EmployeeDetails> findAll() {
+    public List<Employee> findAll() {
         return employeeRepository.findAll();
     }
 
     //update
     @Override
-    public EmployeeDetails updateEmployee(Integer id) {
-        if(employeeRepository.existsById(id)){
-            EmployeeDetails employeeDetails = employeeRepository.getOne(id);
-            employeeRepository.save(employeeDetails);
-            return employeeDetails;
+    public Employee updateEmployee(Employee employee) {
+        Optional<Employee> existingEmployee = employeeRepository.findById(employee.getId());
+        if (existingEmployee.isPresent()) {
+            Employee employee1 = existingEmployee.get();
+            employee1.setEmpId(employee.getEmpId());
+            employee1.setFirstName(employee.getFirstName());
+            employee1.setLastName(employee.getLastName());
+            employee1.setNumber(employee.getNumber());
+            employee1.setStreet(employee.getStreet());
+            employee1.setCity(employee.getCity());
+            employee1.setPhoneNumber(employee.getPhoneNumber());
+            employee1.setEmail(employee.getEmail());
+            employee1.setDesignation(employee.getDesignation());
+//            employee1.setHourlypay(employee.getHourlypay());
+            employee1.setEmail(employee.getEmail());
+//            employee1.setMaximumWorkingHours(employee.getMaximumWorkingHours());
+
+            return employeeRepository.save(employee1);
+        } else {
+            return null;
+
         }
-       return null;
+    }
+
+
+    //find by id
+    @Override
+    public Optional<Employee> findEmployee(Integer id) {
+        return employeeRepository.findById(id);
     }
 
     //delete by id
     @Override
-    public Boolean deleteEmployee(Integer id) {
-        if(employeeRepository.existsById(id)){
+
+    public Map<String, Boolean> deleteEmployee(Integer id) {
+        Optional<Employee> employee = employeeRepository.findById(id);
+        System.out.println(employee);
+        if (employee.isPresent()) {
+            Employee employee1 = employee.get();
             employeeRepository.deleteById(id);
-            return true;
-        }
-        else{
-            return false;
+            Map<String, Boolean> response = new HashMap<>();
+            response.put("deleted", Boolean.TRUE);
+            return response;
+        } else {
+            return null;
         }
 
     }
-
 
 }

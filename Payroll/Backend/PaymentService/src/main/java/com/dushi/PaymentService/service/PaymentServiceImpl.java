@@ -1,68 +1,163 @@
 package com.dushi.PaymentService.service;
 
 import com.dushi.PaymentService.model.Payment;
+import com.dushi.PaymentService.model.Salary;
 import com.dushi.PaymentService.repository.PaymentRepository;
+import com.dushi.PaymentService.repository.SalaryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
     @Autowired
     PaymentRepository paymentRepository;
-
 //    @Autowired
-//    ApplicationContext applicationContext;
+//    SalaryRepository salaryRepository;
+
 
     @Autowired
     SalaryCalculationService salaryCalculationService;
 
-//    @Bean
-//    public SalaryCalculationService salaryCalculationService(){
-////        return applicationContext.getBean(SalaryCalculationService.class);
-//    return new SalaryCalculationServiceImpl();
-//    }
-
-
     @Override
     public Payment savePayment(Payment payment) {
-        //payment.setMonthlySalary(SalaryCalculation(payment.getWorkingHours(),payment.getHourlypay(),payment.getMonth()));
-        payment.setDaySalary(salaryCalculationService.salaryCalculation(payment.getWorkingHours(),payment.getHourlypay()));
-        return paymentRepository.save(payment);
+      //  Payment newPayment=paymentRepository.save(payment);
+        payment.setDaySalary(salaryCalculationService.salaryCalculation(payment.getWorkingHours(), payment.getHourlypay()));
+        Payment newPayment=paymentRepository.save(payment);
+     //   payment.setMonthlySalary(salaryCalculationService.monthlySalaryCalculation(payment.getEmpId(), payment.getYear(), payment.getMonth()));
+        return newPayment;
+
     }
 
 
-    @Override
-    public List<Payment> findByEmpId(Integer empId) {
-        return paymentRepository.findAllByEmpId(empId);
-    }
+//    @Override
+//    public List<Payment> findByEmpId(Integer empId) {
+//        return paymentRepository.findAllByEmpId(empId);
+//    }
 
+//    @Override
+//    public Payment update(Payment payment) {
+//        return paymentRepository.save(payment);
+//    }
     @Override
     public Payment update(Payment payment) {
-        return paymentRepository.save(payment);
+        Optional<Payment> existingPayment =  paymentRepository.findById(payment.getId());
+        System.out.println();
+        if(existingPayment.isPresent()){
+            Payment payment1 = existingPayment.get();
+            payment1.setEmpId(payment.getEmpId());
+            payment1.setYear(payment.getYear());
+            payment1.setMonth(payment.getMonth());
+            payment1.setDay(payment.getDay());
+            payment1.setWorkingHours(payment.getWorkingHours());
+            payment1.setHourlypay(payment.getHourlypay());
+            payment1.setDaySalary(salaryCalculationService.salaryCalculation(payment.getWorkingHours(), payment.getHourlypay()));
+        //    payment1.setMonthlySalary(salaryCalculationService.monthlySalaryCalculation(payment.getEmpId(), payment.getYear(), payment.getMonth()));
+            return paymentRepository.save(payment1);
+        }
+       else{
+           return null;
+
+        }
+    }
+
+
+//    @Override
+//    public double findMonthlySalary(Integer empId, Integer year, String month) {
+//        List<Payment> paymentDetails = paymentRepository.findByEmpId(empId);
+//        System.out.println("pay" + paymentDetails);
+//        double monthlySalary = paymentDetails.stream()
+//                .filter(payment -> (payment.getYear().equals(year)) && (payment.getMonth().equals(month)))
+//                .distinct()
+//                .filter(payment -> (payment != null && payment.getDaySalary() != null))
+//                .mapToDouble(Payment::getDaySalary)
+//                .sum();
+//
+//            return monthlySalary;
+//    }
+
+    @Override
+    public List<Payment> findAll() {
+        return paymentRepository.findAll();
     }
 
     @Override
-    public Double salaryCalculation(Double workingHours, Double hourlypay) {
-       // Double monthlySalary = 0.0;
-        Double daySalary = 0.0;
+    public Optional<Payment> findPayment(Integer id) {
+        return paymentRepository.findById(id);
+    }
 
-       // if (month.equals(month)) {
-        //    for (int day = 1; day < 32; day++) {
-                daySalary = (hourlypay * workingHours);
-                System.out.println("day salary:" + daySalary);
+    @Override
+    public Map<String, Boolean> deletePayment(Integer id) {
+        Optional<Payment> payment  = paymentRepository.findById(id);
+        if(payment.isPresent()){
+            Payment payment1=payment.get();
+            paymentRepository.deleteById(id);
+            Map<String, Boolean> response = new HashMap<>();
+            response.put("deleted", Boolean.TRUE);
+            return response;
+        }
+        else {
+            return null;
+        }
 
-              //  monthlySalary += daySalary;
-              //  System.out.println("monthly salary:" + monthlySalary);
-                return daySalary;
-            }
+    }
 
-      //  }
-      //  return monthlySalary;
-    //}
+    @Override
+    public Double findMonthlySalary(Integer empId, Integer year, String month) {
+        System.out.println("salary");
+        List<Payment> paymentDetails = paymentRepository.findByEmpId(empId);
+        System.out.println("pay" + paymentDetails);
+        double monthlySalary = paymentDetails.stream()
+                .filter(payment -> (payment.getYear().equals(year)) && (payment.getMonth().equals(month)))
+                .distinct()
+                .filter(payment -> (payment != null && payment.getDaySalary() != null))
+                .mapToDouble(Payment::getDaySalary)
+                .sum();
+//        Salary salary = new Salary();
+//        salary.setEmpId(empId);
+//        salary.setYear(year);
+//        salary.setMonth(month);
+//        salary.setMonthlySalary(monthlySalary);
+//        salaryRepository.save(salary);
+        if(paymentDetails.isEmpty()){
+            return null;
+        }
+        else{
+            Payment payment1 = new Payment();
+            payment1.setMonthlySalary(monthlySalary);
+            paymentRepository.save(payment1);
+            return monthlySalary;
+
+        }
+    }
 
 
-}
+
+//    @Override
+//    public Salary findMonthlySalary(Integer empId, Integer year, String month) {
+//            System.out.println("salary");
+//            List<Payment> paymentDetails = paymentRepository.findByEmpId(empId);
+//            System.out.println("pay" + paymentDetails);
+//            double monthlySalary = paymentDetails.stream()
+//                    .filter(payment -> (payment.getYear().equals(year)) && (payment.getMonth().equals(month)))
+//                    .distinct()
+//                    .filter(payment -> (payment != null && payment.getDaySalary() != null))
+//                    .mapToDouble(Payment::getDaySalary)
+//                    .sum();
+//            Salary salary = new Salary();
+//            salary.setEmpId(empId);
+//            salary.setYear(year);
+//            salary.setMonth(month);
+//            salary.setMonthlySalary(monthlySalary);
+//            System.out.println("monthlySalary"+monthlySalary);
+//            return salaryRepository.save(salary);
+//
+//            // return salary;
+//        }
+
+    }
+

@@ -16,7 +16,7 @@ public class Telephone {
     @ManyToOne
     @JoinColumn
     @JsonIgnore
-    EmployeeDetails employeeDetails;
+    Employee employee;
 
     public Integer getId() {
         return id;
@@ -34,11 +34,11 @@ public class Telephone {
         this.phoneNumber = phoneNumber;
     }
 
-    public EmployeeDetails getEmployeeDetails() {
-        return employeeDetails;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeDetails(EmployeeDetails employeeDetails) {
-        this.employeeDetails = employeeDetails;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }

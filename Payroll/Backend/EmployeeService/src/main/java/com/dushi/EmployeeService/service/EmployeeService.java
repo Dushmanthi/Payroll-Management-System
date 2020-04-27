@@ -1,21 +1,25 @@
 package com.dushi.EmployeeService.service;
 
-import com.dushi.EmployeeService.model.EmployeeDetails;
+import com.dushi.EmployeeService.model.Employee;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 public interface EmployeeService {
    // boolean loginEmployee(EmployeeDetails employee);
 
-    EmployeeDetails saveEmployee(EmployeeDetails employeeDetails);
+    Employee saveEmployee(Employee employee);
 
-    EmployeeDetails findById(Integer id);
+    List<Employee> findAll();
 
-    List<EmployeeDetails> findAll();
+    Employee updateEmployee(Employee employee);
 
-    Boolean deleteEmployee(Integer id);
+    Optional<Employee> findEmployee(Integer id);
 
-    EmployeeDetails updateEmployee(Integer id);
+    Employee findByEmployeeId(Integer empId);
 
-   // EmployeeDetails findByEmpId(Integer id);
+    Map<String, Boolean> deleteEmployee(Integer id);
+
+    // EmployeeDetails findByEmpId(Integer id);
 }

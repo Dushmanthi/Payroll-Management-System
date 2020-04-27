@@ -2,6 +2,9 @@ package com.dushi.AttendanceService.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "attendance")
@@ -9,17 +12,27 @@ public class Attendance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotNull(message = "empId can not be missing or empty")
     private Integer empId;
+
+    @NotNull(message = "year can not be missing or empty")
+    @Digits(integer=4, fraction=0,message = "year can have digits")
     private Integer year;
+
+    @NotBlank(message = "month can not be missing or empty")
     private String month;
+
+    @NotNull(message = "day can not be missing or empty")
+    @Digits(integer=2, fraction=0,message = "year can have digits")
     private Integer day;
+
+    @NotNull(message = "workingHours can not be missing or empty")
+    @Digits(integer=2, fraction=2,message = "year can have combination of digits and fractions")
     private Double workingHours;
+
+    @NotNull(message = "isPresent can not be missing or empty")
     private String isPresent;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JsonIgnore
-   // EmployeeDetails employeeDetails; //getter setter
-
 
     public Integer getId() {
         return id;
@@ -69,15 +82,6 @@ public class Attendance {
         this.workingHours = workingHours;
     }
 
-//    public Boolean getPresent() {
-//        return present;
-//    }
-//
-//    public void setPresent(Boolean present) {
-//        this.present = present;
-//    }
-
-
     public String getIsPresent() {
         return isPresent;
     }
@@ -86,16 +90,8 @@ public class Attendance {
         this.isPresent = isPresent;
     }
 
-    @Override
-    public String toString() {
-        return "Attendance{" +
-                "id=" + id +
-                ", empId=" + empId +
-                ", year=" + year +
-                ", month='" + month + '\'' +
-                ", day=" + day +
-                ", workingHours=" + workingHours +
-                ", isPresent='" + isPresent + '\'' +
-                '}';
-    }
+    //   @ManyToOne(cascade = CascadeType.ALL)
+//    @JsonIgnore
+   // EmployeeDetails employeeDetails; //getter setter
+
 }

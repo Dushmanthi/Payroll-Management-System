@@ -20,7 +20,7 @@ public class Address {
     @OneToOne
     @JsonIgnore
     @JoinColumn(name = "empId")
-    EmployeeDetails employeeDetails;
+    Employee employee;
 
     public Integer getId() {
         return id;
@@ -54,11 +54,11 @@ public class Address {
         this.city = city;
     }
 
-    public EmployeeDetails getEmployeeDetails() {
-        return employeeDetails;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeDetails(EmployeeDetails employeeDetails) {
-        this.employeeDetails = employeeDetails;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }

@@ -13,6 +13,18 @@ import { MenuComponent } from './menu/menu.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { RegisterSuccessComponent } from './auth/register-success/register-success.component';
 import {Ng2Webstorage} from 'ngx-webstorage';
+import { AddAttendanceComponent } from './add-attendance/add-attendance.component';
+import { AddPaymentComponent } from './add-payment/add-payment.component';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { ViewEmployeesComponent } from './view-employees/view-employees.component';
+import { ViewAttendanceComponent } from './view-attendance/view-attendance.component';
+import { ViewPaymentsComponent } from './view-payments/view-payments.component';
+import { AttendanceDetailsComponent } from './attendance-details/attendance-details.component';
+import { UpdateAttendanceComponent } from './update-attendance/update-attendance.component';
+import { UpdatePaymentsComponent } from './update-payments/update-payments.component';
+import { PaymentDetailsComponent } from './payment-details/payment-details.component';
+import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 
 
 @NgModule({
@@ -23,7 +35,19 @@ import {Ng2Webstorage} from 'ngx-webstorage';
     LogoutComponent,
     MenuComponent,
     RegisterComponent,
-    RegisterSuccessComponent
+    RegisterSuccessComponent,
+    AddAttendanceComponent,
+    AddPaymentComponent,
+    AddEmployeeComponent,
+    ViewEmployeesComponent,
+    ViewAttendanceComponent,
+    ViewPaymentsComponent,
+    AttendanceDetailsComponent,
+    UpdateAttendanceComponent,
+    UpdatePaymentsComponent,
+    PaymentDetailsComponent,
+    UpdateEmployeeComponent,
+    EmployeeDetailsComponent
   ],
   imports: [
     BrowserModule,

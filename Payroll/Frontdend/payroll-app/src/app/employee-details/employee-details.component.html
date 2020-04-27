@@ -1,0 +1,35 @@
+<app-menu></app-menu>
+
+<h2>Employee Details</h2>
+
+<hr/>
+<div *ngIf="employee">
+  <div>
+    <label><b>Emp Id: </b></label> {{employee.empId}}
+  </div>
+  <div>
+    <label><b>FirstName: </b></label> {{employee.firstName}}
+  </div>
+  <div>
+    <label><b>LastName: </b></label> {{employee.lastName}}
+  </div>
+  <div>
+    <label><b>Email: </b></label> {{employee.email}}
+  </div>
+  <div>
+    <label><b>Designation: </b></label> {{employee.designation}}
+  </div>
+  <div>
+    <label><b>Hourlypay: </b></label> {{employee.hourlypay}}
+  </div>
+  <div>
+    <label><b>maximumWorkingHours: </b></label> {{employee.maximumWorkingHours}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Employee List</button><br>
+
+
+

@@ -1,18 +1,17 @@
 package com.dushi.EmployeeService.repository;
 
-import com.dushi.EmployeeService.model.EmployeeDetails;
-import com.dushi.EmployeeService.sharedModel.Attendance;
-import org.springframework.data.domain.Example;
+import com.dushi.EmployeeService.model.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<EmployeeDetails,Integer> {
+public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
 
-    Optional<EmployeeDetails> findByEmpId(Integer id);
+    Optional<Employee> findByEmpId(Integer id);
 
- //   List<Attendance> findAll(Example<Attendance> example);
+    Optional<Employee> findById(Integer id);
+
+
 }

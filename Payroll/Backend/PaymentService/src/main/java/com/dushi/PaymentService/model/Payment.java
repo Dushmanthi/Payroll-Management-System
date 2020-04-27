@@ -2,6 +2,10 @@ package com.dushi.PaymentService.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -10,15 +14,31 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+   // @NotNull(message = "empId can not be missing or empty")
     private Integer empId;
+
+    @NotNull(message = "year can not be missing or empty")
+    @Digits(integer=4, fraction=0)
     private Integer year;
+
+    @NotBlank(message = "month can not be missing or empty")
     private String month;
+
+    @NotNull(message = "day can not be missing or empty")
+    @Digits(integer=2, fraction=0,message = "day can have digits only")
     private Integer day;
+
+    @NotNull(message = "workingHours can not be missing or empty")
+    @Digits(integer=2, fraction=2,message = "workingHours can have digits and fraction numbers")
     private Double workingHours;
+
+    @NotNull(message = "hourlypay can not be missing or empty")
+    @Digits(integer=5, fraction=2,message = "hourlypay can have digits and fraction numbers")
     private Double hourlypay;
+
     private Double daySalary;
-   // private Double monthlySalary;
-    //private boolean paid;
+    private Double monthlySalary;
+//    private String isPaid;
 
 //    @ManyToOne
 //    @JoinColumn
@@ -99,19 +119,19 @@ public class Payment {
         this.daySalary = daySalary;
     }
 
-//    public Double getMonthlySalary() {
-//        return monthlySalary;
+    public Double getMonthlySalary() {
+        return monthlySalary;
+    }
+
+    public void setMonthlySalary(Double monthlySalary) {
+        this.monthlySalary = monthlySalary;
+    }
+
+//    public String getIsPaid() {
+//        return isPaid;
 //    }
 //
-//    public void setMonthlySalary(Double monthlySalary) {
-//        this.monthlySalary = monthlySalary;
-//    }
-//
-//    public boolean isPaid() {
-//        return paid;
-//    }
-//
-//    public void setPaid(boolean paid) {
-//        this.paid = paid;
+//    public void setIsPaid(String isPaid) {
+//        this.isPaid = isPaid;
 //    }
 }
