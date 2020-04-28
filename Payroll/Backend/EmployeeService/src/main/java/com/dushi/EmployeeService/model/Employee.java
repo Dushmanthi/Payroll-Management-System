@@ -69,14 +69,6 @@ public class Employee {
         this.phoneNumber = phoneNumber;
     }
 
-    //    @NotNull(message = "hourlypay can not be missing or empty")
-//    @Digits(integer=5, fraction=2)
-//    private Double hourlypay;
-//
-//    @NotNull(message = "workingHours can not be missing or empty")
-//    @Digits(integer=2, fraction=2)
-//    private Integer maximumWorkingHours;
-
 
 //    @OneToOne(cascade = CascadeType.ALL,mappedBy = "employee",fetch = FetchType.EAGER)
 //    Address address;
@@ -190,14 +182,6 @@ public class Employee {
         this.email = email;
     }
 
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
-
     public String getDesignation() {
         return designation;
     }
@@ -206,37 +190,4 @@ public class Employee {
         this.designation = designation;
     }
 
-//    public Double getHourlypay() {
-//        return hourlypay;
-//    }
-//
-//    public void setHourlypay(Double hourlypay) {
-//        this.hourlypay = hourlypay;
-//    }
-//
-//    public Integer getMaximumWorkingHours() {
-//        return maximumWorkingHours;
-//    }
-//
-//    public void setMaximumWorkingHours(Integer maximumWorkingHours) {
-//        this.maximumWorkingHours = maximumWorkingHours;
-//    }
-
-
-//    public Boolean getState() {
-//        return state;
-//    }
-//
-//    public void setState(Boolean state) {
-//        this.state = state;
-//    }
-
-
-//    public String getState() {
-//        return state;
-//    }
-//
-//    public void setState(String state) {
-//        this.state = state;
-//    }
 }

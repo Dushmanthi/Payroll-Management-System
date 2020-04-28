@@ -11,11 +11,7 @@ public interface PaymentService {
     
     Payment savePayment(Payment payment);
 
-//    List<Payment> findByEmpId(Integer id);
-
     Payment update(Payment payment);
-
-//    double findMonthlySalary(Integer empId, Integer year, String month);
 
     List<Payment> findAll();
 
@@ -25,5 +21,4 @@ public interface PaymentService {
 
     Double findMonthlySalary(Integer empId, Integer year, String month);
 
-//    public Boolean deletePayment(Integer id);
 }

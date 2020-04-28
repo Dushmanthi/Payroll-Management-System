@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Optional;
 
 public interface EmployeeService {
-   // boolean loginEmployee(EmployeeDetails employee);
 
     Employee saveEmployee(Employee employee);
 

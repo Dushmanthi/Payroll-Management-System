@@ -38,20 +38,6 @@ public class Payment {
 
     private Double daySalary;
     private Double monthlySalary;
-//    private String isPaid;
-
-//    @ManyToOne
-//    @JoinColumn
-//    @JsonIgnore
-//    EmployeeDetails employeeDetails;
-//
-//    public EmployeeDetails getEmployeeDetails() {
-//        return employeeDetails;
-//    }
-//
-//    public void setEmployeeDetails(EmployeeDetails employeeDetails) {
-//        this.employeeDetails = employeeDetails;
-//    }
 
     public Integer getId() {
         return id;
@@ -127,11 +113,4 @@ public class Payment {
         this.monthlySalary = monthlySalary;
     }
 
-//    public String getIsPaid() {
-//        return isPaid;
-//    }
-//
-//    public void setIsPaid(String isPaid) {
-//        this.isPaid = isPaid;
-//    }
 }

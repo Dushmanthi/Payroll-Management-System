@@ -16,11 +16,11 @@ public class EmployeeServiceController {
     @Autowired
     EmployeeService employeeService;
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public Employee test() {
-        Employee employee = new Employee();
-        employee.setEmpId(1001);
-        employee.setFirstName("dushi");
+//    @RequestMapping(value = "/test", method = RequestMethod.GET)
+//    public Employee test() {
+//        Employee employee = new Employee();
+//        employee.setEmpId(1001);
+//        employee.setFirstName("dushi");
 //       employeeDetails.setLastName("ferz");
 //       employeeDetails.setAddress("gampaha");
 //       employeeDetails.setContactNo(071234567);
@@ -29,8 +29,8 @@ public class EmployeeServiceController {
 //       employeeDetails.setHourlypay(200.00);
 //       employeeDetails.setMaximumWorkingHours(9);
 //       employeeDetails.setPassword("1234");
-        return employee;
-    }
+//        return employee;
+//    }
 
     //register employee
     @RequestMapping(value = "/add-employee", method = RequestMethod.POST)

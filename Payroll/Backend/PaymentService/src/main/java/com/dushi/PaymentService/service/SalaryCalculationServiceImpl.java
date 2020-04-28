@@ -56,37 +56,6 @@ public class SalaryCalculationServiceImpl implements SalaryCalculationService {
     public Salary saveSalary(Salary salary) {
         return salaryRepository.save(salary);
     }
-
-//    @Override
-//    public Double monthlySalaryCalculation(Integer empId, Integer year, String month) {
-//        System.out.println("salary");
-//        List<Payment> paymentDetails = paymentRepository.findByEmpId(empId);
-//        System.out.println("pay" + paymentDetails);
-//        double monthlySalary = paymentDetails.stream()
-//                .filter(payment -> (payment.getYear().equals(year)) && (payment.getMonth().equals(month)))
-//                .distinct()
-//                .filter(payment -> (payment != null && payment.getDaySalary() != null))
-//                .mapToDouble(Payment::getDaySalary)
-//                .sum();
-////        Salary salary = new Salary();
-////        salary.setEmpId(empId);
-////        salary.setYear(year);
-////        salary.setMonth(month);
-////        salary.setMonthlySalary(monthlySalary);
-////        salaryRepository.save(salary);
-//        if(paymentDetails.isEmpty()){
-//            return null;
-//        }
-//        else{
-//            Payment payment1 = new Payment();
-//            payment1.setMonthlySalary(monthlySalary);
-//        //    paymentRepository.save(payment1);
-//            return monthlySalary;
-//
-//        }
-//    }
-//
-
-
+    
 }
 

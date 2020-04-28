@@ -43,11 +43,6 @@ public class PaymentServiceController {
         return paymentService.savePayment(payment);
     }
 
-//    @RequestMapping(value = "/findPayment/{id}",method = RequestMethod.GET)
-//    public List<Payment> findEmployeePayment(@PathVariable("id") Integer id){
-//        return paymentService.findByEmpId(id);
-//    }
-
     //findAll employee
     @RequestMapping(value = "/findAllPayment",method = RequestMethod.GET)
     public List<Payment> findAll(){
@@ -65,19 +60,6 @@ public class PaymentServiceController {
     public Payment updatePayment(@Valid @RequestBody Payment payment){
         return paymentService.update(payment);
     }
-
-//    @RequestMapping(value = "/monthlyPayment/{empId}/{year}/{month}",method = RequestMethod.GET)
-//    public double findMonthlyPayment(@PathVariable("empId") Integer empId,
-//                                     @PathVariable("year") Integer year,
-//                                     @PathVariable("month") String month){
-//        return paymentService.findMonthlySalary(empId,year,month);
-//    }
-//    @RequestMapping(value = "/monthlyPayment/{empId}/{year}/{month}",method = RequestMethod.GET)
-//    public Double findMonthlyPayment(@PathVariable("empId") Integer empId,
-//                                     @PathVariable("year") Integer year,
-//                                     @PathVariable("month") String month){
-//        return paymentService.findMonthlySalary(empId,year,month);
-//    }
 
     @RequestMapping(value = "/deletePayment/{id}",method = RequestMethod.DELETE)
     public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Integer id){

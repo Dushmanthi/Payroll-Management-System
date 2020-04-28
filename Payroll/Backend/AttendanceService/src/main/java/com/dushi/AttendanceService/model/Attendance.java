@@ -90,8 +90,4 @@ public class Attendance {
         this.isPresent = isPresent;
     }
 
-    //   @ManyToOne(cascade = CascadeType.ALL)
-//    @JsonIgnore
-   // EmployeeDetails employeeDetails; //getter setter
-
 }

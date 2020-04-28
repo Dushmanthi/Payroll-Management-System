@@ -65,21 +65,6 @@ public class PaymentServiceImpl implements PaymentService {
         }
     }
 
-
-//    @Override
-//    public double findMonthlySalary(Integer empId, Integer year, String month) {
-//        List<Payment> paymentDetails = paymentRepository.findByEmpId(empId);
-//        System.out.println("pay" + paymentDetails);
-//        double monthlySalary = paymentDetails.stream()
-//                .filter(payment -> (payment.getYear().equals(year)) && (payment.getMonth().equals(month)))
-//                .distinct()
-//                .filter(payment -> (payment != null && payment.getDaySalary() != null))
-//                .mapToDouble(Payment::getDaySalary)
-//                .sum();
-//
-//            return monthlySalary;
-//    }
-
     @Override
     public List<Payment> findAll() {
         return paymentRepository.findAll();
@@ -117,12 +102,6 @@ public class PaymentServiceImpl implements PaymentService {
                 .filter(payment -> (payment != null && payment.getDaySalary() != null))
                 .mapToDouble(Payment::getDaySalary)
                 .sum();
-//        Salary salary = new Salary();
-//        salary.setEmpId(empId);
-//        salary.setYear(year);
-//        salary.setMonth(month);
-//        salary.setMonthlySalary(monthlySalary);
-//        salaryRepository.save(salary);
         if(paymentDetails.isEmpty()){
             return null;
         }

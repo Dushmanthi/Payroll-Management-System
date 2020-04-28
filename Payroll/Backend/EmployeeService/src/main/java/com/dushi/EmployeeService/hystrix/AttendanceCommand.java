@@ -28,7 +28,7 @@ public class AttendanceCommand extends HystrixCommand<Attendance[]> {
         HttpEntity<String> httpEntity = new HttpEntity<>("",httpHeaders);
         System.out.println("attendance []"+ employee.getEmpId());
         ResponseEntity<Attendance[]> responseEntity = restTemplate.exchange("http://attendanceService:8282/payroll/findAttendance/"+ employee.getEmpId(), HttpMethod.GET,httpEntity,Attendance[].class);
-        System.out.println(responseEntity.getBody().length+" >>>>>>>>>>>>>>>>>>>>>>>>>");
+        System.out.println(responseEntity.getBody().length);
         return responseEntity.getBody();
     }
 

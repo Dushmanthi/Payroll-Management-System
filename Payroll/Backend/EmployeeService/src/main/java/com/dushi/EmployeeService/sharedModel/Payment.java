@@ -10,7 +10,7 @@ public class Payment {
     private Double workingHours;
     private Double hourlypay;
     private Double daySalary;
-    // private Double monthlySalary;
+    private Double monthlySalary;
     //private boolean paid;
 
 
@@ -81,19 +81,11 @@ public class Payment {
         this.daySalary = daySalary;
     }
 
-//    public Double getMonthlySalary() {
-//        return monthlySalary;
-//    }
-//
-//    public void setMonthlySalary(Double monthlySalary) {
-//        this.monthlySalary = monthlySalary;
-//    }
-//
-//    public boolean isPaid() {
-//        return paid;
-//    }
-//
-//    public void setPaid(boolean paid) {
-//        this.paid = paid;
-//    }
+    public Double getMonthlySalary() {
+        return monthlySalary;
+    }
+
+    public void setMonthlySalary(Double monthlySalary) {
+        this.monthlySalary = monthlySalary;
+    }
 }

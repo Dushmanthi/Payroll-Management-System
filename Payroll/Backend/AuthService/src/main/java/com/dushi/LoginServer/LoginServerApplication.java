@@ -10,6 +10,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableDiscoveryClient
+@EnableCircuitBreaker
 public class LoginServerApplication {
 
 	public static void main(String[] args) {

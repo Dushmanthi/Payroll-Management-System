@@ -128,9 +128,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             employee1.setPhoneNumber(employee.getPhoneNumber());
             employee1.setEmail(employee.getEmail());
             employee1.setDesignation(employee.getDesignation());
-//            employee1.setHourlypay(employee.getHourlypay());
             employee1.setEmail(employee.getEmail());
-//            employee1.setMaximumWorkingHours(employee.getMaximumWorkingHours());
 
             return employeeRepository.save(employee1);
         } else {
